@@ -41,5 +41,12 @@ typedef struct s_data{
 	int		color;
 }				t_data;
 
+//main.c
+
+int	ft_strlen(char *s);
+int	is_cub_file(char *file);
+char	*hihi(const char *str, int start, int end);
+char **stock_file(int fd);
+void	init_maps(char *file);
 
 #endif
