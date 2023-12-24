@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
+/*   By: shiro <shiro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:13:30 by nsion             #+#    #+#             */
-/*   Updated: 2023/12/21 17:55:10 by nsion            ###   ########.fr       */
+/*   Updated: 2023/12/24 18:03:10 by shiro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <mlx.h>
+//# include <mlx.h>
 # include <math.h>
 # include <string.h>
 # include "ft_printf/libftprintf.h"
@@ -42,11 +42,16 @@ typedef struct s_data{
 }				t_data;
 
 //main.c
-
 int	ft_strlen(char *s);
-int	is_cub_file(char *file);
 char	*hihi(const char *str, int start, int end);
-char **stock_file(int fd);
 void	init_maps(char *file);
+
+//check_map.c
+int	is_cub_file(char *file);
+int  is_squart(char **map);
+int is_wall(char **map);
+
+//clean_exit.c
+void    clean_exit(char **map, char *message);
 
 #endif
