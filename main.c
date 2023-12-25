@@ -6,7 +6,7 @@
 /*   By: shiro <shiro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:14:23 by nsion             #+#    #+#             */
-/*   Updated: 2023/12/24 18:12:18 by shiro            ###   ########.fr       */
+/*   Updated: 2023/12/25 23:51:14 by shiro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,35 +31,58 @@ char	*hihi(const char *str, int start, int end)
 	return (cp);
 }
 
-char **stock_map(char *file)
+int	count_lines(char *file)
 {
-	int	fd;
-	char *line;
-	char	**map;
-	int	i;
+	int		fd;
+	int		lines_count;
+	char	*line;
 
 	fd = open(file, O_RDONLY);
-		if(!fd)
-			exit(printf("Error : file does not exist\n"));
-		map = malloc((fd + 1) * sizeof(char*));
-		if (!map)
-			return (NULL);
-		i = 0;
-		while((line = get_next_line(fd)) != NULL)
+	if (fd == -1)
+		exit(printf("Error opening file"));
+	lines_count = 0;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		lines_count++;
+		free(line);
+	}
+	close(fd);
+	return (lines_count);
+}
+
+char	**stock_map(char *file)
+{
+	int		fd;
+	char	*line;
+	char	**map;
+	int		i;
+
+	fd = open(file, O_RDONLY);
+	if (!fd)
+		exit(printf("Error : file does not exist\n"));
+	map = malloc((count_lines(file) + 1) * sizeof(char *));
+	if (!map)
+		return (NULL);
+	i = 0;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		if (!line)
 		{
-			if(!line)
-				exit(printf("Error : can't read this file\n"));
-			map[i++] = hihi(line, 0, ft_strlen(line));
-			free(line);
+			close(fd);
+			exit(printf("Error : can't read this file\n"));
 		}
-		map[i] = NULL;
-		return(map);
+		map[i++] = hihi(line, 0, ft_strlen(line));
+		free(line);
+	}
+	map[i] = NULL;
+	close(fd);
+	return (map);
 }
 
 void	init_maps(char *file)
 {
 	char	**map;
-	int	i;
+	int		i;
 
 	map = NULL;
 	if (is_cub_file(file) == 0)
@@ -89,5 +112,5 @@ int	main(int ac, char **av)
 	}
 	else
 		printf("Error : Non file.\n");
-	return(0);
+	return (0);
 }

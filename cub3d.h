@@ -6,7 +6,7 @@
 /*   By: shiro <shiro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:13:30 by nsion             #+#    #+#             */
-/*   Updated: 2023/12/24 18:03:10 by shiro            ###   ########.fr       */
+/*   Updated: 2023/12/25 23:40:47 by shiro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ typedef struct s_data{
 }				t_data;
 
 //main.c
-int	ft_strlen(char *s);
+int		ft_strlen(char *s);
 char	*hihi(const char *str, int start, int end);
 void	init_maps(char *file);
 
 //check_map.c
-int	is_cub_file(char *file);
-int  is_squart(char **map);
-int is_wall(char **map);
+int		is_cub_file(char *file);
+int		is_squart(char **map);
+int		is_wall(char **map);
 
 //clean_exit.c
-void    clean_exit(char **map, char *message);
+void	clean_exit(char **map, char *message);
 
 #endif
