@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:14:23 by nsion             #+#    #+#             */
-/*   Updated: 2023/12/26 16:00:27 by nsion            ###   ########.fr       */
+/*   Updated: 2023/12/26 17:35:08 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,75 +39,75 @@ int	count_lines(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		exit(printf("Error opening file"));
+		exit(ft_printf("Error opening file"));
 	lines_count = 0;
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		lines_count++;
 		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
 	return (lines_count);
 }
 
-char	**stock_map(char *file)
+char	**stock(char *file)
 {
 	int		fd;
 	char	*line;
-	char	**map;
+	char	**all;
 	int		i;
 
 	fd = open(file, O_RDONLY);
-	if (!fd)
+	if (fd == -1)
 		exit(printf("Error : file does not exist\n"));
-	map = malloc((count_lines(file) + 1) * sizeof(char *));
-	if (!map)
-		return (NULL);
-	i = 0;
-	while ((line = get_next_line(fd)) != NULL)
+	all = malloc((count_lines(file) + 1) * sizeof(char *));
+	if (!all)
 	{
-		if (!line)
-		{
-			close(fd);
-			exit(printf("Error : can't read this file\n"));
-		}
-		map[i++] = hihi(line, 0, ft_strlen(line));
-		free(line);
+		close(fd);
+		return (NULL);
 	}
-	map[i] = NULL;
+	i = 0;
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		all[i++] = hihi(line, 0, ft_strlen(line));
+		free(line);
+		line = get_next_line(fd);
+	}
+	all[i] = NULL;
 	close(fd);
-	return (map);
+	return (all);
 }
 
 void	init_maps(char *file)
 {
-	char	**map;
+	char	**all;
 	int		i;
 
-	map = NULL;
+	all = NULL;
 	if (is_cub_file(file) == 0)
 	{
-		map = stock_map(file);
-		//not is_squart et is_wall mais is_contour tout le contour doit etre des mur pas forcement carre ou rectangle 
-		/*if (is_squart(map) == 0)
-			clean_exit(map, "Error : not valid map");
-		if (is_wall(map) == 0)
-			clean_exit(map, "Error : not valid map");
-		*/
-		if (has_contour(map, 9, 47) == 1)
-			printf("ok\n");
-		else
-			clean_exit(map, "Error : contour not valid\n");
+		all = stock(file);
+		//check_syntax(all);
+		// si il y a tout les element 
+		//textur = stock_text(all);
+		//textur = all[0] -> all[7]
+		//map = stock_map(all);
+		//map = all[7] - > [...]
+		//is_valid_map(map);
+		//is_valid_textur(texture);
 		i = 0;
-		while (map[i])
+		while (all[i])
 		{
-			printf("map[%d] : %s\n", i, map[i]);
+			ft_printf("all[%d] : %s\n", i, all[i]);
 			i++;
 		}
-		clean_exit(map, "");
+		clean_exit(all, "");
 	}
 	else
-		clean_exit(map, "Error : is not a .cub file");
+		clean_exit(all, "Error : is not a .cub file");
 }
 
 int	main(int ac, char **av)
@@ -117,6 +117,6 @@ int	main(int ac, char **av)
 		init_maps(av[1]);
 	}
 	else
-		printf("Error : Non file.\n");
+		ft_printf("Error : Non file.\n");
 	return (0);
 }

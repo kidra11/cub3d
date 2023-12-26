@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by shiro             #+#    #+#             */
-/*   Updated: 2023/12/26 16:01:00 by nsion            ###   ########.fr       */
+/*   Updated: 2023/12/26 16:55:12 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,43 +85,4 @@ int	is_wall(char **map)
 	if (wall_line(map[i]) == 0)
 		return (0);
 	return (1);
-}
-
-int has_contour(const char *map, int rows, int cols) 
-{
-    int col = 0;
-
-    while (col < cols) {
-        if (map[col] == '0') {
-            return 1;
-        }
-        col++;
-    }
-
-    col = (rows - 1) * cols;
-    while (col < rows * cols) {
-        if (map[col] == '0') {
-            return 1;
-        }
-        col++;
-    }
-
-    int row = 1;
-
-    while (row < rows - 1) {
-        if (map[row * cols] == '0') {
-            return 1;
-        }
-        row++;
-    }
-
-    row = 1;
-    while (row < rows - 1) {
-        if (map[row * cols + cols - 1] == '0') {
-            return 1;
-        }
-        row++;
-    }
-
-    return 0;
 }
