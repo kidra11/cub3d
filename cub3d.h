@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shiro <shiro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:13:30 by nsion             #+#    #+#             */
-/*   Updated: 2023/12/25 23:40:47 by shiro            ###   ########.fr       */
+/*   Updated: 2023/12/26 16:01:17 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct s_data{
+typedef struct s_data
+{
 	void	*mlx;
 	void	*wi;
 	void	*img;
@@ -40,7 +41,6 @@ typedef struct s_data{
 	double	av_y;
 	int		color;
 }				t_data;
-
 //main.c
 int		ft_strlen(char *s);
 char	*hihi(const char *str, int start, int end);
@@ -50,6 +50,7 @@ void	init_maps(char *file);
 int		is_cub_file(char *file);
 int		is_squart(char **map);
 int		is_wall(char **map);
+int has_contour(const char *map, int rows, int cols);
 
 //clean_exit.c
 void	clean_exit(char **map, char *message);

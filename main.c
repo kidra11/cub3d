@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shiro <shiro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:14:23 by nsion             #+#    #+#             */
-/*   Updated: 2023/12/25 23:51:14 by shiro            ###   ########.fr       */
+/*   Updated: 2023/12/26 16:00:27 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,19 +86,25 @@ void	init_maps(char *file)
 
 	map = NULL;
 	if (is_cub_file(file) == 0)
-	{	
+	{
 		map = stock_map(file);
-		if (is_squart(map) == 0)
+		//not is_squart et is_wall mais is_contour tout le contour doit etre des mur pas forcement carre ou rectangle 
+		/*if (is_squart(map) == 0)
 			clean_exit(map, "Error : not valid map");
 		if (is_wall(map) == 0)
 			clean_exit(map, "Error : not valid map");
-		//is_cub
+		*/
+		if (has_contour(map, 9, 47) == 1)
+			printf("ok\n");
+		else
+			clean_exit(map, "Error : contour not valid\n");
 		i = 0;
 		while (map[i])
 		{
 			printf("map[%d] : %s\n", i, map[i]);
 			i++;
 		}
+		clean_exit(map, "");
 	}
 	else
 		clean_exit(map, "Error : is not a .cub file");
