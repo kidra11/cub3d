@@ -3,47 +3,61 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shiro <shiro@student.42.fr>                +#+  +:+       +#+         #
+#    By: bbach <bbach@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/21 15:28:04 by nsion             #+#    #+#              #
-#    Updated: 2023/12/24 18:03:21 by shiro            ###   ########.fr        #
+#    Created: 2023/09/02 11:10:15 by bbach             #+#    #+#              #
+#    Updated: 2023/12/26 17:09:00 by bbach            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c check_map.c clean_exit.c ft_printf/ft_printf.c  ft_printf/ft_find.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+SRC = main.c \
+	check_map.c \
+	clean_exit.c 
 
-NAME = cub3D
-
-GCC = gcc
-
-CFLAGS = -Wall -Wextra -Werror
+OBJS = $(SRC:.c=.o)
 
 RM = rm -f
 
-OBJS = $(SRCS:.c=.o)
+NAME = cub3d
 
-#LMLX = mlx/libmlx.a
+LMLX = ./includes/mlx/libmlx.a
 
-#LIB = -Lmlx/ -lmlx -L/usr/lib/ -lXext -lX11 -lm -I ./ -I ./mlx/
+LIB = ./includes/libft/libft/libft.a
 
-all	:  $(NAME) #$(LMLX)
+CC = gcc
 
-#${LMLX}	:
-#	make -C mlx/ all
+CFLAGS = -Wall -Werror -Wextra -g
 
-.c.o	:
-	$(GCC) $(CFLAGS) $(LIB) -c $< -o $(<:.c=.o) 
+all : ${LIB} ${LMLX} $(NAME) 
 
-$(NAME) : $(OBJS)
-	$(GCC) $(OBJS) -o $(NAME)
+${LMLX}:
+	make -s -C ./includes/mlx/ all
 
-clean	:
-	$(RM) $(OBJS)
-#	make -C mlx clean
+${LIB} :
+	make -s -C ./includes/libft/ all
 
-fclean	:	clean
-	$(RM) $(NAME)
+%.o : %.c
+	@${CC} ${CFLAGS} -I/usr/includes -Imlx -O3 -c $< -o $@
 
-re	: fclean all
+$(NAME) : $(OBJS) ${LIB} ${LMLX}
+	@${CC} ${CFLAGS} $(OBJS) -L./includes/libft -lft -L./includes/mlx/ -lmlx -L/usr/lib/ -I./mlx/ -lXext -lX11 -lm -o ${NAME}
+	@echo "\033[32mDone !\033[0m"
 
-.PHONY	: all clean fclean re
+clean :
+	@${RM} ${OBJS}
+	@make -s -C ./includes/libft/ 
+	make -C ./includes/mlx/ clean
+
+fclean : clean
+	@${RM} $(NAME)
+	@make -s -C ./includes/libft/ 
+	make -C ./includes/mlx/
+
+re : fclean all
+
+debug : ${LIB} $(OBJS)
+	@${CC} ${CFLAGS} $(OBJS) -L./includes/libft -lft -o $(NAME) -g
+	@echo "033[32mDone !\033[0m"
+
+.PHONY : all clean fclean re
+

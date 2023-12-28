@@ -3,86 +3,122 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shiro <shiro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by shiro             #+#    #+#             */
-/*   Updated: 2023/12/25 23:37:09 by shiro            ###   ########.fr       */
+/*   Updated: 2023/12/28 16:40:02 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	is_cub_file(char *file)
+void	is_cub_file(t_cub *cub, char *file)
 {
 	int	i;
+	int j;
 
 	i = 0;
 	while (file[i])
 		i++;
-	i--;
-	if (file[i] == 'b')
+	if (file[i - 1] != 'b' || file[i - 2] != 'u' || file[i - 3] != 'c' 
+		|| file[i - 4] != '.')
+			clean_exit("Error\nWrong file extension", cub);
+	i = 0;
+	ft_printf("test_is_cub_file_1\n");
+	while(cub->map[i])
 	{
-		i--;
-		if (file[i] == 'u')
+		j = 0;
+		ft_printf("test_is_cub_file_2\n");
+		while (cub->map[i][j])
 		{
-			i--;
-			if (file[i] == 'c')
-			{
-				i--;
-				if (file[i] == '.')
-					return (0);
-			}
+			if (cub->map[i][j] != '1' && cub->map[i][j] != '0' && cub->map[i][j] != 'N' 
+				&& cub->map[i][j] != 'S' && cub->map[i][j] != 'E' && cub->map[i][j] != 'W')
+					clean_exit("Error\nWrong character in map", cub);
+			j++;
 		}
+		i++;
 	}
-	return (1);
 }
 
-int	is_squart(char **map)
+int	count_lines(char *file, t_cub *cub)
 {
-	int	i;
+	int		fd;
+	char	*line;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		clean_exit("Error opening file", cub);
+	cub->lines_count = 0;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		cub->lines_count++;
+		free(line);
+	}
+	close(fd);
+	return (cub->lines_count);
+}
+
+char	*ft_copy(const char *str, int start, int end)
+{
+	int		i;
+	char	*cp;
 
 	i = 0;
-	while (map[i] && map[i + 1] != NULL)
+	cp = (char *) malloc(((end - start) + 1) * sizeof(char));
+	if (!cp)
+		return (NULL);
+	while (start < end)
 	{
-		if (ft_strlen(map[i]) == ft_strlen(map[i + 1]))
-			i++;
-		else
-			return (0);
+		if (str[start] == '\n')
+			start++;
+		cp[i++] = str[start++];
 	}
-	return (1);
+	cp[i] = 0;
+	return (cp);
 }
 
-int	wall_line(char *line)
+void	stock_map(char *file_path, t_cub *cub)
 {
-	int	i;
+	int		fd;
+	char	*line;
+	int		i;
 
 	i = 0;
-	while (line[i])
+	fd = open(file_path, O_RDONLY);
+	if (fd < 0)
+		clean_exit("Error : can't open this file", cub);
+	line = malloc(sizeof(char) * count_lines(file_path, cub) + 1);
+	if (!line)
+		return ;
+	i = read(fd, line, 10000);
+	if (i == 0)
 	{
-		if (line[i] == '1')
-			i++;
-		else
-			return (0);
+		free(line);
+		clean_exit("Error : empty file", cub);
 	}
-	return (1);
+	line[i] = '\0';
+	cub->map = ft_split(line, '\n');
+	free(line);
+	close(fd);
 }
 
-int	is_wall(char **map)
+
+void	init_maps(char *file, t_cub *cub)
 {
-	int	i;
+	int		i;
 
+	cub->map = NULL;
+	ft_printf("test_init_maps_1\n");
+	stock_map(file, cub);
+	is_cub_file(cub, file);	
 	i = 0;
-	if (wall_line(map[0]) == 0)
-		return (0);
-	while (map[i])
+	while (cub->map[i])
 	{
-		if (map[i][0] == '1' && map[i][ft_strlen(map[i]) - 1] == '1')
-			i++;
-		else
-			return (0);
+		ft_printf("map[%d] : %s\n", i, cub->map[i]);
+		i++;
 	}
-	i--;
-	if (wall_line(map[i]) == 0)
-		return (0);
-	return (1);
 }
+
+
+
+
