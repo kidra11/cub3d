@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:13:30 by nsion             #+#    #+#             */
-/*   Updated: 2023/12/26 17:01:17 by nsion            ###   ########.fr       */
+/*   Updated: 2023/12/29 19:31:42 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,10 @@ int		is_wall(char **map);
 
 //clean_exit.c
 void	clean_exit(char **map, char *message);
+
+//check_syntax.c
+int	duble(char **all);
+int	check_syntax(char **all);
+
 
 #endif

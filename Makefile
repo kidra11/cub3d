@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shiro <shiro@student.42.fr>                +#+  +:+       +#+         #
+#    By: nsion <nsion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 15:28:04 by nsion             #+#    #+#              #
-#    Updated: 2023/12/24 18:03:21 by shiro            ###   ########.fr        #
+#    Updated: 2023/12/29 19:31:59 by nsion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c check_map.c clean_exit.c ft_printf/ft_printf.c  ft_printf/ft_find.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+SRCS = main.c check_map.c clean_exit.c check_syntax.c ft_printf/ft_printf.c  ft_printf/ft_find.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 NAME = cub3D
 

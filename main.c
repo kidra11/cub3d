@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:14:23 by nsion             #+#    #+#             */
-/*   Updated: 2023/12/26 17:35:08 by nsion            ###   ########.fr       */
+/*   Updated: 2023/12/29 19:30:41 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ void	init_maps(char *file)
 	if (is_cub_file(file) == 0)
 	{
 		all = stock(file);
-		//check_syntax(all);
+		if (check_syntax(all) == 1)
+			ft_printf("valid_map\n");
 		// si il y a tout les element 
 		//textur = stock_text(all);
 		//textur = all[0] -> all[7]
