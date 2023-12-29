@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by shiro             #+#    #+#             */
-/*   Updated: 2023/12/29 15:13:05 by bbach            ###   ########.fr       */
+/*   Updated: 2023/12/29 17:44:25 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	elements_in_map(t_cub *cub)
 	
 	i = 0;
 	j = 0;
+	ft_printf("%s\n", cub->map_copy[i]);
 	while(cub->map_copy[i])
 	{
 		while (cub->map_copy[i][j])
@@ -56,6 +57,7 @@ void	get_map(char *file_path, t_cub *cub)
 	int		fd;
 	char	*line;
 	int		i;
+	int j = 0;
 
 	i = 0;
 	fd = open(file_path, O_RDONLY);
@@ -71,20 +73,44 @@ void	get_map(char *file_path, t_cub *cub)
 		clean_exit("Error : empty file", cub);
 	}
 	line[i] = '\0';
+	//printf("line : %s\n", line);
 	cub->map = ft_split(line, '\n');
 	i = 0;
+	int o = 0;
 	while (cub->map[i])
 	{
 		if (cub->map[i][0] == 'N' || cub->map[i][0] == 'S' || cub->map[i][0] == 'W' 
 		|| cub->map[i][0] == 'E' || cub->map[i][0] == 'F' || cub->map[i][0] == 'C')
+			o++;
+		if (cub->map[i][0] == '1')
+			j++;
+		i++;
+	}
+	//printf("o : %d\n", o);
+	printf("j : %d\n", j);
+	cub->textures_path = malloc(sizeof(char *) * o + 1);
+	if (!cub->textures_path)
+		return ;
+	cub->textures_path[i + 1] = '\0';
+	cub->map_copy = malloc(sizeof(char *) * j + 1);
+	if (!cub->map_copy)
+		return ;
+	cub->map_copy[j + 1] = '\0';
+	i = 0;
+	j = 0;
+	while (cub->map[i])
+	{
+		if (cub->map[i][0] == 'N' || cub->map[i][0] == 'S' || cub->map[i][0] == 'W' 
+			|| cub->map[i][0] == 'E' || cub->map[i][0] == 'F' || cub->map[i][0] == 'C')
 		{
-			cub->textures_path[i] = ft_copy(cub->map[i], 2, ft_strlen(cub->map[i])); 
-			ft_printf("cub->textures_path[%s] : %s\n", i, cub->textures_path[i]);
+				cub->textures_path[i] = ft_copy(cub->map[i], 2, ft_strlen(cub->map[i])); 
+				ft_printf("cub->textures_path[%d] : %s\n", i, cub->textures_path[i]);
 		}
 		if (cub->map[i][0] == '1' || cub->map[i][0] == '0')
 		{
-			cub->map_copy[i] = ft_copy(cub->map[i], 0, ft_strlen(cub->map[i]));
-			ft_printf("cub->map[%d] : %s\n", i, cub->map[i]);
+			cub->map_copy[j] = ft_copy(cub->map[i], 0, ft_strlen(cub->map[i]));
+			ft_printf("cub->map_copy[%d] : %s\n", j, cub->map_copy[j]);
+			j++;
 		}
 		i++;
 	}
@@ -95,19 +121,21 @@ void	get_map(char *file_path, t_cub *cub)
 
 void	init_maps(char *file, t_cub *cub)
 {
-	int		i;
+	//int		i;
 
 	is_cub_file(cub, file);	
 	ft_printf("test_1\n");
 	get_map(file, cub);
 	ft_printf("test_2\n");
 	elements_in_map(cub);
-	i = 0;
-	while (cub->map[i])
-	{
-		ft_printf("map[%d] : %s\n", i, cub->map[i]);
-		i++;
-	}
+	ft_printf("test 3\n");
+	//i = 0;
+	ft_printf("test4\n");
+	//while (cub->map[i])
+	//{
+	//	ft_printf("map[%d] : %s\n", i, cub->map[i]);
+	//	i++;
+	//}
 }
 
 

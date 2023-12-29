@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 14:39:24 by bbach             #+#    #+#             */
-/*   Updated: 2023/12/29 15:10:16 by bbach            ###   ########.fr       */
+/*   Updated: 2023/12/29 17:11:20 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ char	*ft_copy(const char *str, int start, int end)
 			start++;
 		cp[i++] = str[start++];
 	}
-	cp[i] = 0;
+	cp[i] = '\0';
 	return (cp);
 }
