@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by shiro             #+#    #+#             */
-/*   Updated: 2023/12/29 11:41:22 by bbach            ###   ########.fr       */
+/*   Updated: 2023/12/29 15:13:05 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,19 @@ void	elements_in_map(t_cub *cub)
 	
 	i = 0;
 	j = 0;
-	ft_printf("test_elements_in_map_1\n");
-	ft_printf("map[%d] : %s\n", i, cub->map[i]);
-	while(cub->map[i])
+	while(cub->map_copy[i])
 	{
-		ft_printf("test_elements_map_2\n");
-		while (cub->map[i][j])
+		while (cub->map_copy[i][j])
 		{
-			ft_printf("map[%d][%d]\n", i, j);
-			if (cub->map[i][j] != '1' && cub->map[i][j] != '0' && cub->map[i][j] != 'N' 
-				&& cub->map[i][j] != 'S' && cub->map[i][j] != 'E' && cub->map[i][j] != 'W')
-					{
-						ft_printf("test_element_in_map_4\n");
+			if (cub->map_copy[i][j] != '1' && cub->map_copy[i][j] != '0' && cub->map_copy[i][j] != 'N' 
+				&& cub->map_copy[i][j] != 'S' && cub->map_copy[i][j] != 'E' && cub->map_copy[i][j] != 'W')
 						exit(ft_printf("Error\nWrong character in map\n"));
-					}
+			if (cub->map_copy[i][j] == 'N' || cub->map_copy[i][j] == 'S' || cub->map_copy[i][j] == 'E' 
+				|| cub->map_copy[i][j] == 'W')
+        	{
+            	cub->data.player_pos_x = i;
+            	cub->data.player_pos_y = j;
+       		}
 			j++;
 		}
 		j = 0;
@@ -52,44 +51,7 @@ void	elements_in_map(t_cub *cub)
 	}
 }
 
-int	count_lines(char *file, t_cub *cub)
-{
-	int		fd;
-	char	*line;
-
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		clean_exit("Error opening file", cub);
-	cub->lines_count = 0;
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		cub->lines_count++;
-		free(line);
-	}
-	close(fd);
-	return (cub->lines_count);
-}
-
-char	*ft_copy(const char *str, int start, int end)
-{
-	int		i;
-	char	*cp;
-
-	i = 0;
-	cp = (char *) malloc(((end - start) + 1) * sizeof(char));
-	if (!cp)
-		return (NULL);
-	while (start < end)
-	{
-		if (str[start] == '\n')
-			start++;
-		cp[i++] = str[start++];
-	}
-	cp[i] = 0;
-	return (cp);
-}
-
-void	stock_map(char *file_path, t_cub *cub)
+void	get_map(char *file_path, t_cub *cub)
 {
 	int		fd;
 	char	*line;
@@ -97,7 +59,7 @@ void	stock_map(char *file_path, t_cub *cub)
 
 	i = 0;
 	fd = open(file_path, O_RDONLY);
-	if (fd < 0)
+	if (fd == -1)
 		clean_exit("Error : can't open this file", cub);
 	line = malloc(sizeof(char) * 100000);
 	if (!line)
@@ -110,6 +72,22 @@ void	stock_map(char *file_path, t_cub *cub)
 	}
 	line[i] = '\0';
 	cub->map = ft_split(line, '\n');
+	i = 0;
+	while (cub->map[i])
+	{
+		if (cub->map[i][0] == 'N' || cub->map[i][0] == 'S' || cub->map[i][0] == 'W' 
+		|| cub->map[i][0] == 'E' || cub->map[i][0] == 'F' || cub->map[i][0] == 'C')
+		{
+			cub->textures_path[i] = ft_copy(cub->map[i], 2, ft_strlen(cub->map[i])); 
+			ft_printf("cub->textures_path[%s] : %s\n", i, cub->textures_path[i]);
+		}
+		if (cub->map[i][0] == '1' || cub->map[i][0] == '0')
+		{
+			cub->map_copy[i] = ft_copy(cub->map[i], 0, ft_strlen(cub->map[i]));
+			ft_printf("cub->map[%d] : %s\n", i, cub->map[i]);
+		}
+		i++;
+	}
 	free(line);
 	close(fd);
 }
@@ -119,9 +97,10 @@ void	init_maps(char *file, t_cub *cub)
 {
 	int		i;
 
-	ft_printf("test_init_maps_1\n");
 	is_cub_file(cub, file);	
-	stock_map(file, cub);
+	ft_printf("test_1\n");
+	get_map(file, cub);
+	ft_printf("test_2\n");
 	elements_in_map(cub);
 	i = 0;
 	while (cub->map[i])

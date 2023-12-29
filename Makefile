@@ -6,13 +6,14 @@
 #    By: bbach <bbach@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/02 11:10:15 by bbach             #+#    #+#              #
-#    Updated: 2023/12/26 17:09:00 by bbach            ###   ########.fr        #
+#    Updated: 2023/12/29 15:10:23 by bbach            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = main.c \
 	check_map.c \
-	clean_exit.c 
+	clean_exit.c \
+	utils_1.c
 
 OBJS = $(SRC:.c=.o)
 

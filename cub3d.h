@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2023/12/29 11:43:39 by bbach            ###   ########.fr       */
+/*   Updated: 2023/12/29 15:10:10 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@
 
 typedef struct	s_data
 {
-
+    int     player_pos_x;
+    int     player_pos_y;
 }				t_data;
 
 typedef struct	s_sprite
@@ -56,6 +57,8 @@ typedef struct s_cub
 {
     int         lines_count;
     char        **map;
+    char        **map_copy;
+    char        **textures_path;
     t_data      data;
     t_sprite    sprite;
 }            t_cub;
@@ -66,11 +69,13 @@ int     main(int ac, char **av);
 
 //check_maps.c
 
-char   *ft_copy(const char *str, int start, int end);
-void	    init_maps(char *file, t_cub *cub);
+char        *ft_copy(const char *str, int start, int end);
 int         count_lines(char *file, t_cub *cub);
+
+
+void	    init_maps(char *file, t_cub *cub);
 void		is_cub_file(t_cub *cub, char *file);
-void        stock_map(char *file_path, t_cub *cub);
+void        get_map(char *file_path, t_cub *cub);
 void        elements_in_map(t_cub *cub);
 
 //clean_exit.c
