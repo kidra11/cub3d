@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by shiro             #+#    #+#             */
-/*   Updated: 2023/12/28 16:40:02 by bbach            ###   ########.fr       */
+/*   Updated: 2023/12/29 11:24:27 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	is_cub_file(t_cub *cub, char *file)
 			clean_exit("Error\nWrong file extension", cub);
 	i = 0;
 	ft_printf("test_is_cub_file_1\n");
+	ft_printf("map[%d] : %s\n", i, cub->map[i]);
 	while(cub->map[i])
 	{
 		j = 0;
@@ -33,7 +34,10 @@ void	is_cub_file(t_cub *cub, char *file)
 		{
 			if (cub->map[i][j] != '1' && cub->map[i][j] != '0' && cub->map[i][j] != 'N' 
 				&& cub->map[i][j] != 'S' && cub->map[i][j] != 'E' && cub->map[i][j] != 'W')
-					clean_exit("Error\nWrong character in map", cub);
+					{
+						ft_printf("test_is_cub_file_3\n");
+						exit(ft_printf("Error\nWrong character in map\n"));
+					}
 			j++;
 		}
 		i++;
@@ -87,7 +91,7 @@ void	stock_map(char *file_path, t_cub *cub)
 	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
 		clean_exit("Error : can't open this file", cub);
-	line = malloc(sizeof(char) * count_lines(file_path, cub) + 1);
+	line = malloc(sizeof(char) * 100000);
 	if (!line)
 		return ;
 	i = read(fd, line, 10000);
