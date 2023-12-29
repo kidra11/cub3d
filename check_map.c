@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by shiro             #+#    #+#             */
-/*   Updated: 2023/12/29 11:24:27 by bbach            ###   ########.fr       */
+/*   Updated: 2023/12/29 11:41:22 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	is_cub_file(t_cub *cub, char *file)
 {
 	int	i;
-	int j;
 
 	i = 0;
 	while (file[i])
@@ -23,23 +22,32 @@ void	is_cub_file(t_cub *cub, char *file)
 	if (file[i - 1] != 'b' || file[i - 2] != 'u' || file[i - 3] != 'c' 
 		|| file[i - 4] != '.')
 			clean_exit("Error\nWrong file extension", cub);
+}
+
+void	elements_in_map(t_cub *cub)
+{
+	int i; 
+	int j;
+	
 	i = 0;
-	ft_printf("test_is_cub_file_1\n");
+	j = 0;
+	ft_printf("test_elements_in_map_1\n");
 	ft_printf("map[%d] : %s\n", i, cub->map[i]);
 	while(cub->map[i])
 	{
-		j = 0;
-		ft_printf("test_is_cub_file_2\n");
+		ft_printf("test_elements_map_2\n");
 		while (cub->map[i][j])
 		{
+			ft_printf("map[%d][%d]\n", i, j);
 			if (cub->map[i][j] != '1' && cub->map[i][j] != '0' && cub->map[i][j] != 'N' 
 				&& cub->map[i][j] != 'S' && cub->map[i][j] != 'E' && cub->map[i][j] != 'W')
 					{
-						ft_printf("test_is_cub_file_3\n");
+						ft_printf("test_element_in_map_4\n");
 						exit(ft_printf("Error\nWrong character in map\n"));
 					}
 			j++;
 		}
+		j = 0;
 		i++;
 	}
 }
@@ -111,10 +119,10 @@ void	init_maps(char *file, t_cub *cub)
 {
 	int		i;
 
-	cub->map = NULL;
 	ft_printf("test_init_maps_1\n");
-	stock_map(file, cub);
 	is_cub_file(cub, file);	
+	stock_map(file, cub);
+	elements_in_map(cub);
 	i = 0;
 	while (cub->map[i])
 	{

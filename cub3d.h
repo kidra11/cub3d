@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2023/12/28 16:08:21 by bbach            ###   ########.fr       */
+/*   Updated: 2023/12/29 11:43:39 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,17 @@ typedef struct s_cub
 }            t_cub;
 
 //main.C
-
-char   *ft_copy(const char *str, int start, int end);
-int    count_lines(char *file, t_cub *cub);
-void	init_maps(char *file, t_cub *cub);
+void    init_1(t_cub *cub);
+int     main(int ac, char **av);
 
 //check_maps.c
 
+char   *ft_copy(const char *str, int start, int end);
+void	    init_maps(char *file, t_cub *cub);
+int         count_lines(char *file, t_cub *cub);
 void		is_cub_file(t_cub *cub, char *file);
 void        stock_map(char *file_path, t_cub *cub);
+void        elements_in_map(t_cub *cub);
 
 //clean_exit.c
 
