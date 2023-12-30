@@ -1,0 +1,5 @@
+checker les murs
+free correctement avant d'attaquer raycasting
+checker les doublons dans la map
+checker coordonnees necessaires au raycasting et init
+chercher textures et enregistrer en format .xpm

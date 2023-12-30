@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:14:23 by nsion             #+#    #+#             */
-/*   Updated: 2023/12/29 14:12:03 by bbach            ###   ########.fr       */
+/*   Updated: 2023/12/30 12:07:03 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_1(t_cub *cub)
 {
 	cub->lines_count = 0;
-	cub->map = NULL;
+	cub->all = NULL;
 	cub->data.player_pos_x = 0;
 	cub->data.player_pos_y = 0;
 }

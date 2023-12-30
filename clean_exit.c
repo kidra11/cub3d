@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:57:22 by shiro             #+#    #+#             */
-/*   Updated: 2023/12/28 12:07:18 by bbach            ###   ########.fr       */
+/*   Updated: 2023/12/30 12:03:23 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void	clean_exit(char *message, t_cub *cub)
 	int	i;
 
 	i = 0;
-	if (cub->map)
+	if (cub->all)
 	{
-		while (cub->map[i])
+		while (cub->all[i])
 		{
-			free(cub->map[i]);
+			free(cub->all[i]);
 			i++;
 		}
-		free(cub->map);
+		free(cub->all);
 	}
 	if (!message)
 		exit(ft_printf("Error\n"));

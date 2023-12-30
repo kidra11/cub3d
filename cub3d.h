@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2023/12/29 15:10:10 by bbach            ###   ########.fr       */
+/*   Updated: 2023/12/30 12:03:40 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,10 @@ typedef struct	s_sprite
 typedef struct s_cub
 {
     int         lines_count;
-    char        **map;
+    char        **all;
     char        **map_copy;
     char        **textures_path;
+    char        **couleurs_path;
     t_data      data;
     t_sprite    sprite;
 }            t_cub;
@@ -82,5 +83,9 @@ void        elements_in_map(t_cub *cub);
 
 void	clean_exit(char *message, t_cub *cub);
 
+//init_map
+
+void    all_mallc(t_cub *cub);
+void    text_map_malloc(t_cub *cub);
 
 #endif
