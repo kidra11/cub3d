@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2023/12/30 12:03:40 by bbach            ###   ########.fr       */
+/*   Updated: 2023/12/30 15:36:33 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,20 @@ int     main(int ac, char **av);
 
 //check_maps.c
 
-char        *ft_copy(const char *str, int start, int end);
-int         count_lines(char *file, t_cub *cub);
-
-
-void	    init_maps(char *file, t_cub *cub);
-void		is_cub_file(t_cub *cub, char *file);
-void        get_map(char *file_path, t_cub *cub);
+void		is_cub_file(char *file);
 void        elements_in_map(t_cub *cub);
+void        get_map(char *file_path, t_cub *cub);
+void	    init_maps(char *file, t_cub *cub);
+
+//utils_1.c
+
+int         count_lines(char *file, t_cub *cub);
+char        *ft_copy(const char *str, int start, int end);
 
 //clean_exit.c
 
 void	clean_exit(char *message, t_cub *cub);
+void    free_2d_array(char ***arr);
 
 //init_map
 

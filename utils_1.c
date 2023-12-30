@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 14:39:24 by bbach             #+#    #+#             */
-/*   Updated: 2023/12/29 17:11:20 by bbach            ###   ########.fr       */
+/*   Updated: 2023/12/30 15:12:07 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	count_lines(char *file, t_cub *cub)
 		free(line);
 	}
 	close(fd);
-	ft_printf("test_count_lines_1\n");
-	ft_printf("cub->lines_count : %d\n", cub->lines_count);
 	return (cub->lines_count);
 }
 

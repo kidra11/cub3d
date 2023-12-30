@@ -6,13 +6,13 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by shiro             #+#    #+#             */
-/*   Updated: 2023/12/30 12:06:35 by bbach            ###   ########.fr       */
+/*   Updated: 2023/12/30 15:59:36 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	is_cub_file(t_cub *cub, char *file)
+void	is_cub_file(char *file)
 {
 	int	i;
 
@@ -21,7 +21,10 @@ void	is_cub_file(t_cub *cub, char *file)
 		i++;
 	if (file[i - 1] != 'b' || file[i - 2] != 'u' || file[i - 3] != 'c' 
 		|| file[i - 4] != '.')
-			clean_exit("Error\nWrong file extension", cub);
+		{
+			ft_printf("Error\nWrong file extension\n");
+			exit (0);
+		}
 }
 
 void	elements_in_map(t_cub *cub)
@@ -72,28 +75,14 @@ void	get_map(char *file_path, t_cub *cub)
 	}
 	line[i] = '\0';
 	cub->all = ft_split(line, '\n');
+	free(line);
 	all_mallc(cub);
 	text_map_malloc(cub);
-	free(line);
 	close(fd);
 }
 
-
 void	init_maps(char *file, t_cub *cub)
 {
-	int		i;
-
-	is_cub_file(cub, file);	
 	get_map(file, cub);
 	elements_in_map(cub);
-	i = 0;
-	while (cub->all[i])
-	{
-		ft_printf("all[%d] : %s\n", i, cub->all[i]);
-		i++;
-	}
 }
-
-
-
-
