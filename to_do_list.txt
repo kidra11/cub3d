@@ -4,3 +4,4 @@ checker les doublons dans la map
 checker coordonnees necessaires au raycasting et init
 chercher textures et enregistrer en format .xpm
 checker format texture et couleur dans all
+vérifier que la map est bien en bas dans le fichier .cub

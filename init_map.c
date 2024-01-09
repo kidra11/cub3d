@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:11:10 by bbach             #+#    #+#             */
-/*   Updated: 2023/12/30 16:03:42 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/09 16:07:56 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,15 @@ void    all_mallc(t_cub *cub)
 			j++;
 		i++;
 	}
-	cub->textures_path = malloc(sizeof(char *) * o + 1);
+	cub->textures_path = malloc(sizeof(char *) * (o + 1));
 	if (!cub->textures_path)
 		return ;
-	ft_printf("o : %d\n", o);
-	cub->textures_path[ft_strlen(cub->textures_path[o])] = '\0';
-	cub->map_copy = malloc((sizeof(char *) * j + 1));
+	cub->textures_path[o] = '\0';
+	cub->map_copy = malloc((sizeof(char *) * (j + 1)));
 	if (!cub->map_copy)
 		return ;
 	cub->map_copy[j] = '\0';
-    cub->couleurs_path = malloc(sizeof(char *) * p + 1);
+    cub->couleurs_path = malloc(sizeof(char *) * (p + 1));
     if (!cub->couleurs_path)
         return ;
     cub->couleurs_path[p] = '\0';
