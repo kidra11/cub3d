@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/10 10:24:35 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/10 10:52:46 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void    two_commas_only(t_cub *cub);
 void    check_first_letter(t_cub *cub);
 void    three_spaces_only(t_cub *cub);
 void    check_format(t_cub *cub);
+void    check_if_between_0_255(t_cub *cub);
 void    get_atoi_color(t_cub *cub);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:25:42 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/10 10:34:35 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/10 10:52:30 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,21 @@ void    get_atoi_color(t_cub *cub)
         i++;
     }
 }
-
+void    check_if_between_0_255(t_cub *cub)
+{
+    if (cub->data.red_f < 0 || cub->data.red_f > 255)
+        clean_exit("Error\nWrong color format\nPlease use as :\nF (0->255), (0->255), (0->255)", cub);
+    if (cub->data.green_f < 0 || cub->data.green_f > 255)
+        clean_exit("Error\nWrong color format\nPlease use as :\nF (0->255), (0->255), (0->255)", cub);
+    if (cub->data.blue_f < 0 || cub->data.blue_f > 255)
+        clean_exit("Error\nWrong color format\nPlease use as :\nF (0->255), (0->255), (0->255)", cub);
+    if (cub->data.red_c < 0 || cub->data.red_c > 255)
+        clean_exit("Error\nWrong color format\nPlease use as :\nF (0->255), (0->255), (0->255)", cub);
+    if (cub->data.green_c < 0 || cub->data.green_c > 255)
+        clean_exit("Error\nWrong color format\nPlease use as :\nF (0->255), (0->255), (0->255)", cub);
+    if (cub->data.blue_c < 0 || cub->data.blue_c > 255)
+        clean_exit("Error\nWrong color format\nPlease use as :\nF (0->255), (0->255), (0->255)", cub);
+}
 void    check_colors(t_cub *cub)
 {
     two_commas_only(cub);
@@ -148,6 +162,7 @@ void    check_colors(t_cub *cub)
     three_spaces_only(cub);
     check_format(cub);
     get_atoi_color(cub);
+    check_if_between_0_255(cub);
 }
 
 
