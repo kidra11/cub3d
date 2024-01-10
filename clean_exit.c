@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:57:22 by shiro             #+#    #+#             */
-/*   Updated: 2023/12/30 15:45:28 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/10 10:29:35 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,12 @@ void 	free_2d_array(char ***arr)
     }
     free(*arr);
     *arr = NULL;
+}
+
+void	free_everything(t_cub *cub)
+{
+	free_2d_array(&cub->map_copy);
+	free_2d_array(&cub->textures_path);
+	free_2d_array(&cub->couleurs_path);
+	free_2d_array(&cub->all);
 }

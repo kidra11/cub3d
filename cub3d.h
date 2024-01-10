@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2023/12/30 15:36:33 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/10 10:24:35 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@
 
 typedef struct	s_data
 {
+    int     red_f;
+    int     green_f;
+    int     blue_f;
+    int     red_c;
+    int     green_c;
+    int     blue_c;
     int     player_pos_x;
     int     player_pos_y;
 }				t_data;
@@ -84,10 +90,20 @@ char        *ft_copy(const char *str, int start, int end);
 
 void	clean_exit(char *message, t_cub *cub);
 void    free_2d_array(char ***arr);
+void    free_everything(t_cub *cub);
 
 //init_map
 
 void    all_mallc(t_cub *cub);
 void    text_map_malloc(t_cub *cub);
+
+//check_colors.c
+
+void    check_colors(t_cub *cub);
+void    two_commas_only(t_cub *cub);
+void    check_first_letter(t_cub *cub);
+void    three_spaces_only(t_cub *cub);
+void    check_format(t_cub *cub);
+void    get_atoi_color(t_cub *cub);
 
 #endif

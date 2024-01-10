@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by shiro             #+#    #+#             */
-/*   Updated: 2023/12/30 15:59:36 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/10 10:20:26 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	is_cub_file(char *file)
 		|| file[i - 4] != '.')
 		{
 			ft_printf("Error\nWrong file extension\n");
-			exit (0);
+			exit(0);
 		}
 }
 
@@ -85,4 +85,5 @@ void	init_maps(char *file, t_cub *cub)
 {
 	get_map(file, cub);
 	elements_in_map(cub);
+	check_colors(cub);
 }

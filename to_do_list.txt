@@ -3,5 +3,6 @@ gérer les leak correctement avant d'attaquer raycasting
 checker les doublons dans la map
 checker coordonnees necessaires au raycasting et init
 chercher textures et enregistrer en format .xpm
-checker format texture et couleur dans all
+checker format texture et couleur dans all puis parser
 vérifier que la map est bien en bas dans le fichier .cub
+changer les espaces vides par des murs ?
