@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by shiro             #+#    #+#             */
-/*   Updated: 2024/01/11 14:05:20 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/11 15:31:50 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	elements_in_map(t_cub *cub)
 		while (cub->map_copy[i][j])
 		{
 			if (cub->map_copy[i][j] != '1' && cub->map_copy[i][j] != '0' && cub->map_copy[i][j] != 'N' 
-				&& cub->map_copy[i][j] != 'S' && cub->map_copy[i][j] != 'E' && cub->map_copy[i][j] != 'W')
+				&& cub->map_copy[i][j] != 'S' && cub->map_copy[i][j] != 'E' && cub->map_copy[i][j] != 'W' 
+				&& cub->map_copy[i][j] != ' ')
 						exit(ft_printf("Error\nWrong character in map\n"));
 			if (cub->map_copy[i][j] == 'N' || cub->map_copy[i][j] == 'S' || cub->map_copy[i][j] == 'E' 
 				|| cub->map_copy[i][j] == 'W')
@@ -84,6 +85,7 @@ void	get_map(char *file_path, t_cub *cub)
 void	init_maps(char *file, t_cub *cub)
 {
 	get_map(file, cub);
+	flood_the_wall(cub);
 	map_at_the_end_of_file(cub);
 	elements_in_map(cub);
 	check_colors(cub);

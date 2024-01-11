@@ -6,3 +6,5 @@ chercher textures et enregistrer en format .xpm
 checker format texture et couleur dans all puis parser
 vérifier que la map est bien en bas dans le fichier .cub
 changer les espaces vides par des murs ?
+si espaces vides dans la map, remplacer par des 0 ou 1(à voir)
+si espaces vides en dehors de la map, floodfill, ne peux pas etre entouré de 0

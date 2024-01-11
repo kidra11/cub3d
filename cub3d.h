@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/11 14:02:52 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/11 15:31:58 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,10 @@ void    check_texture_path_2(t_cub *cub);
 void    get_path_texture(t_cub *cub);
 void    check_path_correct(t_cub *cub);
 
-//check_all.c
+//check_the_walls.c
+
+void    fill_inside_the_map_with_wall(t_cub *cub);
+void    flood_the_wall(t_cub *cub);
 
 
 #endif

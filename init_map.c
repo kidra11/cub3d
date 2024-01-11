@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:11:10 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/11 14:02:31 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/11 14:34:37 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void    all_mallc(t_cub *cub)
 			o++;
         if (cub->all[i][0] == 'F' || cub->all[i][0] == 'C')
             p++;
-		if (cub->all[i][0] == '1')
+		if (cub->all[i][0] == '1' || cub->all[i][0] == '0' || cub->all[i][0] == ' ' || cub->all[i][0] == '\t')
 			j++;
 		i++;
 	}
@@ -68,7 +68,7 @@ void    text_map_malloc(t_cub *cub)
             cub->couleurs_path[p] = ft_copy(cub->all[i], 0, ft_strlen(cub->all[i]));
             p++;
         }
-		if (cub->all[i][0] == '1' || cub->all[i][0] == '0')
+		if (cub->all[i][0] == '1' || cub->all[i][0] == '0' || cub->all[i][0] == ' ' || cub->all[i][0] == '\t')
 		{
 			cub->map_copy[j] = ft_copy(cub->all[i], 0, ft_strlen(cub->all[i]));
 			j++;
