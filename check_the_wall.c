@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:14:15 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/11 15:34:14 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/11 17:43:32 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,14 @@ void    flood_the_wall(t_cub *cub)
     {
         while (cub->map_copy[i][j])
         {
+            printf("i = %d\nj = %d\n", i, j);
+            printf("le char correspondant a i[j] est %c\n", cub->map_copy[i][j]);
+            printf("le char correspondant a i + 1[j] est %c\n", cub->map_copy[i][j + 1]);
             if (cub->map_copy[i][j] == '0')
             {
                 if (cub->map_copy[i][j + 1] == ' ' || cub->map_copy[i][j - 1] == ' ' 
-                || cub->map_copy[i + 1][j] == ' ' || cub->map_copy[i - 1][j] == ' ')
+                || cub->map_copy[i + 1][j] == ' ' || cub->map_copy[i][j + 1] == '\0' 
+                || cub->map_copy[i - 1][j] == ' ')
                        clean_exit("Error\nMap is not closed inside", cub);            
             }
             j++;

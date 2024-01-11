@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by shiro             #+#    #+#             */
-/*   Updated: 2024/01/11 15:31:50 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/11 17:31:16 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,15 @@ void	get_map(char *file_path, t_cub *cub)
 	i = 0;
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
-		clean_exit("Error : can't open this file", cub);
+	clean_exit("Error : can't open this file", cub);
 	line = malloc(sizeof(char) * 100000);
 	if (!line)
 		return ;
 	i = read(fd, line, 10000);
 	if (i == 0)
 	{
-		free(line);
-		clean_exit("Error : empty file", cub);
+	 	free(line);
+	 	clean_exit("Error : empty file", cub);
 	}
 	line[i] = '\0';
 	cub->all = ft_split(line, '\n');
