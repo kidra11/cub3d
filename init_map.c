@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:11:10 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/09 18:44:16 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/11 14:02:31 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,17 @@ void    text_map_malloc(t_cub *cub)
 		}
 		i++;
 	}
+}
+
+void    map_at_the_end_of_file(t_cub *cub)
+{
+    int i;
+
+    i = 0;
+    while (cub->all[i])
+        i++;
+    if (cub->all[i - 1][0] != '1' && cub->all[i - 1][0] != ' ')
+        clean_exit("Error\nMap not at the end of file", cub);
+    else
+        printf("Map at the end of file\n");
 }

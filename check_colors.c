@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:25:42 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/10 10:52:30 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/10 13:00:19 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ void    check_format(t_cub *cub)
     int j;
 
     i = 0;
-    j = 1;
     while (cub->couleurs_path[i])
     {
+        j = 1;
         while (cub->couleurs_path[i][j])
         {
             if (cub->couleurs_path[i][j] != ' ' && cub->couleurs_path[i][j] != ',' 
@@ -91,7 +91,6 @@ void    check_format(t_cub *cub)
                 clean_exit("Error\nWrong color format\nPlease use as :\nF XXX, XXX, XXX", cub);
             j++;
         }
-        j = 1;
         i++;
     }
 }
@@ -164,7 +163,3 @@ void    check_colors(t_cub *cub)
     get_atoi_color(cub);
     check_if_between_0_255(cub);
 }
-
-
-
-

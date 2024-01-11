@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/10 10:52:46 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/11 14:02:52 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ typedef struct	s_data
     int     red_c;
     int     green_c;
     int     blue_c;
+    char    *no;
+    char    *so;
+    char    *we;
+    char    *ea;
     int     player_pos_x;
     int     player_pos_y;
 }				t_data;
@@ -96,6 +100,7 @@ void    free_everything(t_cub *cub);
 
 void    all_mallc(t_cub *cub);
 void    text_map_malloc(t_cub *cub);
+void    map_at_the_end_of_file(t_cub *cub);
 
 //check_colors.c
 
@@ -106,5 +111,18 @@ void    three_spaces_only(t_cub *cub);
 void    check_format(t_cub *cub);
 void    check_if_between_0_255(t_cub *cub);
 void    get_atoi_color(t_cub *cub);
+
+
+//check_texture.c
+
+void    check_texture(t_cub *cub);
+void    check_1st_letter(t_cub *cub);
+void    check_texture_path_1(t_cub *cub);
+void    check_texture_path_2(t_cub *cub);
+void    get_path_texture(t_cub *cub);
+void    check_path_correct(t_cub *cub);
+
+//check_all.c
+
 
 #endif

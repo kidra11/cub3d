@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:14:23 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/10 10:24:45 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/11 12:18:57 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(int ac, char **av)
 	is_cub_file(av[1]);
 	init_maps(av[1], &cub);
 	// init_1(&cub);
+	//map_bottom_in_file(&cub);
 	free_everything(&cub);
 	return (0);
 }

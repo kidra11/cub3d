@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by shiro             #+#    #+#             */
-/*   Updated: 2024/01/10 10:20:26 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/11 14:05:20 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ void	get_map(char *file_path, t_cub *cub)
 void	init_maps(char *file, t_cub *cub)
 {
 	get_map(file, cub);
+	map_at_the_end_of_file(cub);
 	elements_in_map(cub);
 	check_colors(cub);
+	check_texture(cub);
 }
