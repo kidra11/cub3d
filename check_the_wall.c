@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:14:15 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/11 17:43:32 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/11 17:59:48 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,20 @@ static int     check_last_line(t_cub *cub)
     }
     return (1);
 }
+
+static int    check_first_column(t_cub *cub)
+{
+    int i;
+
+    i = 0;
+    while (cub->map_copy[i])
+    {
+        if (cub->map_copy[i][0] != '1' && cub->map_copy[i][0] != ' ')
+            return (0);
+        i++;
+    }
+    return (1);
+}
 void    flood_the_wall(t_cub *cub)
 {
     int i;
@@ -64,7 +78,8 @@ void    flood_the_wall(t_cub *cub)
     end = 0;
     i = 0;
     j = 0;
-    if (!check_first_line(cub) || !check_last_line(cub))
+    if (!check_first_line(cub) || !check_last_line(cub) 
+        || !check_first_column(cub))
         clean_exit("Error\nMap is not closed outside", cub);
     while (cub->map_copy[i])
         i++;
@@ -76,12 +91,12 @@ void    flood_the_wall(t_cub *cub)
         {
             printf("i = %d\nj = %d\n", i, j);
             printf("le char correspondant a i[j] est %c\n", cub->map_copy[i][j]);
-            printf("le char correspondant a i + 1[j] est %c\n", cub->map_copy[i][j + 1]);
+            printf("le char correspondant a i[j + 1] est %c\n", cub->map_copy[i][j + 1]);
             if (cub->map_copy[i][j] == '0')
             {
                 if (cub->map_copy[i][j + 1] == ' ' || cub->map_copy[i][j - 1] == ' ' 
                 || cub->map_copy[i + 1][j] == ' ' || cub->map_copy[i][j + 1] == '\0' 
-                || cub->map_copy[i - 1][j] == ' ')
+                || cub->map_copy[i - 1][j] == ' ' || cub->map_copy[i + 1][j] == '\0')
                        clean_exit("Error\nMap is not closed inside", cub);            
             }
             j++;
