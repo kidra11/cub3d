@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:14:15 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/11 17:59:48 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/12 14:48:18 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,6 @@ void    flood_the_wall(t_cub *cub)
     {
         while (cub->map_copy[i][j])
         {
-            printf("i = %d\nj = %d\n", i, j);
-            printf("le char correspondant a i[j] est %c\n", cub->map_copy[i][j]);
-            printf("le char correspondant a i[j + 1] est %c\n", cub->map_copy[i][j + 1]);
             if (cub->map_copy[i][j] == '0')
             {
                 if (cub->map_copy[i][j + 1] == ' ' || cub->map_copy[i][j - 1] == ' ' 
@@ -105,4 +102,29 @@ void    flood_the_wall(t_cub *cub)
         i++;
     }
     printf("Map is closed\n");
+}
+void    no_double_in_all(t_cub *cub)
+{
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    while (cub->all[i])
+    {
+        if (ft_isalpha(cub->all[i][0]))
+        {
+            while (cub->all[j])
+            {
+                if (ft_isalpha(cub->all[j][0]) && i != j)
+                {
+                    if (cub->all[i][0] == cub->all[j][0])
+                        clean_exit("Error\nDouble element in file", cub);
+                }
+                j++;
+            }
+            j = 0 + i;
+        }
+        i++;
+    }
 }

@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/11 15:31:58 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/12 14:38:05 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void    check_path_correct(t_cub *cub);
 
 void    fill_inside_the_map_with_wall(t_cub *cub);
 void    flood_the_wall(t_cub *cub);
+void    no_double_in_all(t_cub *cub);
 
 
 #endif

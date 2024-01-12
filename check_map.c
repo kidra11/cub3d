@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by shiro             #+#    #+#             */
-/*   Updated: 2024/01/11 17:31:16 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/12 14:12:20 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	get_map(char *file_path, t_cub *cub)
 void	init_maps(char *file, t_cub *cub)
 {
 	get_map(file, cub);
+	no_double_in_all(cub);
 	flood_the_wall(cub);
 	map_at_the_end_of_file(cub);
 	elements_in_map(cub);
