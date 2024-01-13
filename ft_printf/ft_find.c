@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_find.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:29:11 by nsion             #+#    #+#             */
-/*   Updated: 2023/07/29 12:24:53 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/13 17:05:58 by nathalie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int	ft_len(char *s)
 
 int	ft_putchar(char c)
 {
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
 
 int	ft_putstr(char *s)

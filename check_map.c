@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nath <nath@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:53:27 by nath              #+#    #+#             */
-/*   Updated: 2024/01/11 19:03:29 by nath             ###   ########.fr       */
+/*   Updated: 2024/01/13 17:32:49 by nathalie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	check_map(t_cub *cub)
 		i++;
 	if (cub->all[i - 1][0] != '1' && cub->all[i - 1][0] != ' ')
 		clean_exit("Error\nInvalid or missing map.", cub);
-    else
+	else
 		printf("map OK!\n");
 }
-
-//check_map = on va check tout si la map est bien placer ou si elle existe correctement
+//check_map = on va check tout si la map est bien placer ou si elle existe 
+//correctement
 //

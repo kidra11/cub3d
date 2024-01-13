@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nath <nath@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/11 20:13:04 by nath             ###   ########.fr       */
+/*   Updated: 2024/01/13 17:47:21 by nathalie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct	s_data
+typedef struct s_data
 {
 	int		red_f;
 	int		green_f;
@@ -39,21 +39,21 @@ typedef struct	s_data
 
 typedef struct s_cub
 {
-	int		lines_count;
+	int			lines_count;
 	char		**all;
 	char		**map;
 	char		**tex;
 	char		**colors;
 	t_data		data;
-}            t_cub;
+}			t_cub;
 
 //clean_exit.c
 void	clean_exit(char *message, t_cub *cub);
 
 //check_syntax.c
-int		duble(char **all);
-int 	find_map(char *str);
-void		check_syntax(t_cub *cub);
+void	duble(t_cub *cub);
+int		find_map(char **str);
+void	check_syntax(t_cub *cub);
 
 //check_map.c
 void	check_map(t_cub *cub);
@@ -68,6 +68,6 @@ void	init_file(char *file);
 void	is_cub_file(char *file);
 
 //testeur.c
-void    printf_tab(char **all, char *name);
+void	printf_tab(char **all, char *name);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nath <nath@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/11 20:34:22 by nath             ###   ########.fr       */
+/*   Updated: 2024/01/13 17:37:19 by nathalie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 void	init_file(char *file)
 {
-	t_cub	cub;	
-	
+	t_cub	cub;
+
 	cub.all = stock(file);
 	check_syntax(&cub);
 	check_map(&cub);
-	//printf_tab(cub.all, "all");
+	printf_tab(cub.all, "all");
 	//check_tex(cub);
 	//check_colors(cub);
 	//printf_tab(cub.tex, "tex");
 	//printf_tab(cub.colors, "colors");
-	//cub->texture = 
 }
 
 void	is_cub_file(char *file)
@@ -34,12 +33,12 @@ void	is_cub_file(char *file)
 	i = 0;
 	while (file[i])
 		i++;
-	if (file[i - 1] != 'b' || file[i - 2] != 'u' || file[i - 3] != 'c' 
+	if (file[i - 1] != 'b' || file[i - 2] != 'u' || file[i - 3] != 'c'\
 		|| file[i - 4] != '.')
-		{
-			ft_printf("Error\nWrong file extension\n");
-			exit(0);
-		}
+	{
+		ft_printf("Error\nWrong file extension\n");
+		exit(0);
+	}
 }
 
 int	main(int ac, char **av)
@@ -54,4 +53,5 @@ int	main(int ac, char **av)
 
 //main = on va tout check et initialiser et nettoyer pour bien fermer
 //is_cub_file = on check si c'est un fichier lisible
-//init_file = on stock tout le ficher et check si il est correct et le separer en 3 partie
+//init_file = on stock tout le ficher et check si il est correct et 
+//le separer en 3 partie
