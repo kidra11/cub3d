@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nath <nath@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/13 17:37:19 by nathalie         ###   ########.fr       */
+/*   Updated: 2024/01/14 23:01:22 by nath             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@ void	init_file(char *file)
 
 	cub.all = stock(file);
 	check_syntax(&cub);
+	stock_elem(&cub);
 	check_map(&cub);
-	printf_tab(cub.all, "all");
-	//check_tex(cub);
-	//check_colors(cub);
-	//printf_tab(cub.tex, "tex");
-	//printf_tab(cub.colors, "colors");
+	printf_tab(cub.tex, "tex");
+	printf_tab(cub.colors, "colors");
+	printf_tab(cub.map, "map");
 }
 
 void	is_cub_file(char *file)

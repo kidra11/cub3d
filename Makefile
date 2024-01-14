@@ -3,17 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+         #
+#    By: nath <nath@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 15:28:04 by nsion             #+#    #+#              #
-#    Updated: 2024/01/13 16:46:52 by nathalie         ###   ########.fr        #
+#    Updated: 2024/01/14 20:01:27 by nath             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = main.c\
 	stock.c\
-	check_map.c\
 	check_syntax.c\
+	stock_elem.c\
+	check_map.c\
 	clean_exit.c\
 	testeur.c\
 	ft_printf/ft_printf.c\

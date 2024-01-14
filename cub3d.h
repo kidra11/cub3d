@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nath <nath@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/13 17:47:21 by nathalie         ###   ########.fr       */
+/*   Updated: 2024/01/14 21:31:14 by nath             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,16 @@ typedef struct s_cub
 //clean_exit.c
 void	clean_exit(char *message, t_cub *cub);
 
-//check_syntax.c
+//check_syntax.
+void	map_end(t_cub *cub);
 void	duble(t_cub *cub);
 int		find_map(char **str);
 void	check_syntax(t_cub *cub);
+
+//stock_elem.c
+int	count_elem(t_cub *cub, int choise);
+void    text_map_malloc(t_cub *cub);
+void	stock_elem(t_cub *cub);
 
 //check_map.c
 void	check_map(t_cub *cub);
