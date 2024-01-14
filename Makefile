@@ -6,7 +6,7 @@
 #    By: nath <nath@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 15:28:04 by nsion             #+#    #+#              #
-#    Updated: 2024/01/14 20:01:27 by nath             ###   ########.fr        #
+#    Updated: 2024/01/15 00:23:33 by nath             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ SRC = main.c\
 	check_syntax.c\
 	stock_elem.c\
 	check_map.c\
+	check_texture.c\
+	check_colors.c\
 	clean_exit.c\
 	testeur.c\
 	ft_printf/ft_printf.c\

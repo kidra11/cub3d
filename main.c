@@ -6,7 +6,7 @@
 /*   By: nath <nath@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/14 23:01:22 by nath             ###   ########.fr       */
+/*   Updated: 2024/01/15 00:04:17 by nath             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ void	init_file(char *file)
 	check_syntax(&cub);
 	stock_elem(&cub);
 	check_map(&cub);
-	printf_tab(cub.tex, "tex");
-	printf_tab(cub.colors, "colors");
-	printf_tab(cub.map, "map");
+	check_texture(&cub);
+	check_colors(&cub);
 }
 
 void	is_cub_file(char *file)
