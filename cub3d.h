@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/15 12:24:37 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/15 16:45:28 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <unistd.h>
 
 
-# define screen_width 800
-# define screen_height 600
+# define SCREEN_WIDTH 600
+# define SCREEN_HEIGHT 600
 
 # define ESC 53
 # define LEFT 123
@@ -46,26 +46,37 @@
 # define SCALE12 0.00048828125
 
 
+typedef struct s_img
+{
+    void	*img;
+    char	*addr;
+    int		bits_per_pixel;
+    int		line_length;
+    int		endian;
+}				t_img;
+
 typedef struct	s_data
 {
     int     red_f;
     int     green_f;
     int     blue_f;
+   
     int     red_c;
     int     green_c;
     int     blue_c;
+   
     char    *no;
     char    *so;
     char    *we;
     char    *ea;
+   
     int     player_pos_x;
     int     player_pos_y;
-}				t_data;
-
-typedef struct	s_sprite
-{
     
-}				t_sprite;
+    void    *mlx;
+    void    *mlx_win;
+
+}				t_data;
 
 typedef struct s_cub
 {
@@ -75,7 +86,7 @@ typedef struct s_cub
     char        **textures_path;
     char        **couleurs_path;
     t_data      data;
-    t_sprite    sprite;
+    t_img       img;
 }            t_cub;
 
 //main.C
