@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nath <nath@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/15 00:21:21 by nath             ###   ########.fr       */
+/*   Updated: 2024/01/15 16:52:00 by nathalie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,36 @@ typedef struct s_cub
 }			t_cub;
 
 //clean_exit.c
+void	clean_all_exit(char *message, t_cub *cub);
 void	clean_exit(char *message, t_cub *cub);
+void	end_exit(t_cub *cub);
+void	free_tab(char **tab);
 
-//check_colors.c
+//check_colors_1.c
 void	two_commas_only(t_cub *cub);
-void    check_first_letter(t_cub *cub);
-void    three_spaces_only(t_cub *cub);
-void    check_format(t_cub *cub);
-void    get_atoi_color(t_cub *cub);
-void    check_if_between_0_255(t_cub *cub);
-void    check_colors(t_cub *cub);
+void	check_first_letter(t_cub *cub);
+void	three_spaces_only(t_cub *cub);
+void	check_format(t_cub *cub);
+void	check_colors(t_cub *cub);
+
+//check_colors_2.c
+void	get_f_color(t_cub *cub, int i);
+void	get_c_color(t_cub *cub, int i);
+void	check_if_between_0_255(t_cub *cub);
 
 //check_textures.c
-void    check_1st_letter(t_cub *cub);
-void    check_texture_path_1(t_cub *cub);
-void    get_path_texture(t_cub *cub);
-void    check_path_correct(t_cub *cub);
-void    check_texture(t_cub *cub);
+void	check_1st_letter(t_cub *cub);
+void	check_texture_path_1(t_cub *cub);
+void	get_path_texture(t_cub *cub);
+void	check_path_correct(t_cub *cub);
+void	check_texture(t_cub *cub);
 
 //check_map.c
 void	flood_the_wall(t_cub *cub);
-void	elements_in_map(t_cub *cub);
 void	check_map(t_cub *cub);
 
 //stock_elem.c
+void	elements_in_map(t_cub *cub);
 int		count_elem(t_cub *cub, int choise);
 void	text_map_malloc(t_cub *cub);
 void	stock_elem(t_cub *cub);
@@ -88,7 +94,7 @@ int		count_lines(char *file);
 char	**stock(char *file);
 
 //main.c
-void	init_file(char *file);
+void	init_file(t_cub *cub, char *file);
 void	is_cub_file(char *file);
 
 //testeur.c

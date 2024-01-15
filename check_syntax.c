@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_syntax.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nath <nath@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 19:02:02 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/14 23:01:09 by nath             ###   ########.fr       */
+/*   Updated: 2024/01/15 13:34:56 by nathalie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	map_end(t_cub *cub)
 	while (cub->all[i])
 		i++;
 	if (cub->all[i - 1][0] != '1' && cub->all[i - 1][0] != ' ')
-		clean_exit("Error\nInvalid or missing map.", cub);
+		clean_all_exit("Error\nInvalid or missing map.", cub);
 	else
 		return ;
 }
@@ -41,7 +41,7 @@ void	duble(t_cub *cub)
 				if (ft_isalpha(cub->all[j][0]) && i != j)
 				{
 					if (cub->all[i][0] == cub->all[j][0])
-						clean_exit("Error\nDouble element in file", cub);
+						clean_all_exit("Error\nDouble element in file", cub);
 				}
 				j++;
 			}
@@ -95,7 +95,7 @@ void	check_syntax(t_cub *cub)
 	if (text == 4 && col == 2)
 		map_end(cub);
 	else
-		clean_exit("Error : Syntax not correct", cub);
+		clean_all_exit("Error : Syntax not correct", cub);
 }
 
 //check_syntax = verifier si tout les element sont present

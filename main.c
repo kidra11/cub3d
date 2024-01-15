@@ -3,25 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nath <nath@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/15 00:04:17 by nath             ###   ########.fr       */
+/*   Updated: 2024/01/15 16:17:08 by nathalie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_file(char *file)
+void	init_file(t_cub *cub, char *file)
 {
-	t_cub	cub;
-
-	cub.all = stock(file);
-	check_syntax(&cub);
-	stock_elem(&cub);
-	check_map(&cub);
-	check_texture(&cub);
-	check_colors(&cub);
+	cub->all = stock(file);
+	check_syntax(cub);
+	stock_elem(cub);
+	check_map(cub);
+	check_texture(cub);
+	check_colors(cub);
 }
 
 void	is_cub_file(char *file)
@@ -41,11 +39,14 @@ void	is_cub_file(char *file)
 
 int	main(int ac, char **av)
 {
+	t_cub	cub;
+
 	if (ac != 2)
 		return (ft_printf("Error : Wrong argument.\n"));
 	is_cub_file(av[1]);
-	init_file(av[1]);
-	//clean_exit();
+	init_file(&cub, av[1]);
+	ft_printf("Parsing done\n");
+	end_exit(&cub);
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nath <nath@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:53:27 by nath              #+#    #+#             */
-/*   Updated: 2024/01/15 00:02:27 by nath             ###   ########.fr       */
+/*   Updated: 2024/01/15 16:53:04 by nathalie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,56 +76,30 @@ void	flood_the_wall(t_cub *cub)
 		{
 			if (cub->map[i][j] == '0')
 			{
-				if (cub->map[i][j + 1] == ' ' || cub->map[i][j - 1] == ' ' 
-				|| cub->map[i + 1][j] == ' ' || cub->map[i][j + 1] == '\0' 
+				if (cub->map[i][j + 1] == ' ' || cub->map[i][j - 1] == ' ' \
+				|| cub->map[i + 1][j] == ' ' || cub->map[i][j + 1] == '\0' \
 				|| cub->map[i - 1][j] == ' ' || cub->map[i + 1][j] == '\0')
-					clean_exit("Error\nMap is not closed inside", cub);            
+					clean_exit("Error\nMap is not closed inside", cub);
 			}
 			j++;
 		}
-		i++;
-	}
-}
-
-void	elements_in_map(t_cub *cub)
-{
-	int i; 
-	int j;
-	
-	i = 0;
-	j = 0;
-	while(cub->map[i])
-	{
-		while (cub->map[i][j])
-		{
-			if (cub->map[i][j] != '1' && cub->map[i][j] != '0' && cub->map[i][j] != 'N' 
-				&& cub->map[i][j] != 'S' && cub->map[i][j] != 'E' && cub->map[i][j] != 'W' 
-				&& cub->map[i][j] != ' ')
-						exit(ft_printf("Error\nWrong character in map\n"));
-			if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S' || cub->map[i][j] == 'E' 
-				|| cub->map[i][j] == 'W')
-			{
-				cub->data.player_pos_x = i;
-				cub->data.player_pos_y = j;
-			}
-			j++;
-		}
-		j = 0;
 		i++;
 	}
 }
 
 void	check_map(t_cub *cub)
 {
-	if (!check_first_line(cub) || !check_last_line(cub) 
+	if (!check_first_line(cub) || !check_last_line(cub) \
 		|| !check_first_column(cub))
 		clean_exit("Error\nMap is not closed outside", cub);
 	flood_the_wall(cub);
 	elements_in_map(cub);
 }
-//check_map =  verifi que la map a es fermer et si on a tout les element necesaire
-//elements_in map = 
-//flood_the_wall = 
-//check_first_column = 
-//check_last_line = 
-//check_first_line = 
+
+//check_map =  verifi que la map a es fermer et si on a tout 
+//les element necesaire
+//elements_in_map est dans stock eleme
+//flood_the_wall = verifi que la map est fermer a l'interieur
+//check_first_column = verifi que la premiere colone est bien fermer
+//check_last_line = verifi que la derniere ligne est bien fermer
+//check_first_line = verifi que la premiere ligne est bien fermer
