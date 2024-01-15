@@ -1,10 +1,10 @@
 C 8, 200, 200
 F 255, 0, 0
 
-EA .//path_vers_texture_ea
-SO ./path_vers_texture_so
-WE ./path_vers_texture_we
-NO ./path_vers_texture_no
+EA ./img/ea.xpm
+SO ./img/so.xpm
+WE ./img/we.xpm
+NO ./img/no.xpm
 
           1111111111111111111111111    11111111111111111111
 111111111110000000000000000000011111111111
