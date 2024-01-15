@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/12 14:38:05 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/15 12:24:37 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+
+# define screen_width 800
+# define screen_height 600
 
 # define ESC 53
 # define LEFT 123

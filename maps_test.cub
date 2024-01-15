@@ -1,8 +1,7 @@
 C 8, 200, 200
 F 255, 0, 0
 
-EA ./path_vers_texture_ea
-A
+EA .hlkheqrlgkh*path_vers_texture_ea
 SO ./path_vers_texture_so
 WE ./path_vers_texture_we
 NO ./path_vers_texture_no
