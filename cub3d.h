@@ -6,7 +6,7 @@
 /*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/15 16:52:00 by nathalie         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:19:41 by nathalie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int		count_lines(char *file);
 char	**stock(char *file);
 
 //main.c
+void	init_all_val(t_cub *cub);
 void	init_file(t_cub *cub, char *file);
 void	is_cub_file(char *file);
 
