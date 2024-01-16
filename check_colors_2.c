@@ -6,7 +6,7 @@
 /*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:46:10 by nathalie          #+#    #+#             */
-/*   Updated: 2024/01/15 16:50:27 by nathalie         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:57:04 by nathalie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	get_f_color(t_cub *cub, int i)
 	int	j;
 	int	k;
 
-	j = 1;
+	j = 0;
 	k = 0;
 	while (cub->colors[i][j])
 	{
@@ -33,7 +33,8 @@ void	get_f_color(t_cub *cub, int i)
 				j++;
 			k++;
 		}
-		j++;
+		if (cub->colors[i][j])
+			j++;
 	}
 }
 
@@ -42,7 +43,7 @@ void	get_c_color(t_cub *cub, int i)
 	int	j;
 	int	k;
 
-	j = 1;
+	j = 0;
 	k = 0;
 	while (cub->colors[i][j])
 	{
@@ -58,7 +59,8 @@ void	get_c_color(t_cub *cub, int i)
 				j++;
 			k++;
 		}
-		j++;
+		if (cub->colors[i][j])
+			j++;
 	}
 }
 

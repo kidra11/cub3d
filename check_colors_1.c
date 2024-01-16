@@ -6,7 +6,7 @@
 /*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:25:42 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/15 16:50:43 by nathalie         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:50:11 by nathalie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,19 +101,20 @@ void	check_format(t_cub *cub)
 
 void	check_colors(t_cub *cub)
 {
+	int	i;
+
+	i = 0;
 	two_commas_only(cub);
 	check_first_letter(cub);
 	three_spaces_only(cub);
 	check_format(cub);
-	if (cub->colors[0][0] == 'F')
+	while (cub->colors[i])
 	{
-		get_f_color(cub, 0);
-		get_c_color(cub, 1);
-	}
-	else
-	{
-		get_f_color(cub, 1);
-		get_c_color(cub, 0);
+		if (cub->colors[i][0] == 'F')
+			get_f_color(cub, i);
+		if (cub->colors[i][0] == 'C')
+			get_c_color(cub, i);
+		i++;
 	}
 	check_if_between_0_255(cub);
 }
