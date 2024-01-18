@@ -6,7 +6,7 @@
 #    By: bbach <bbach@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/02 11:10:15 by bbach             #+#    #+#              #
-#    Updated: 2024/01/11 14:18:36 by bbach            ###   ########.fr        #
+#    Updated: 2024/01/17 14:06:56 by bbach            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ SRC = main.c \
 	init_map.c \
 	check_colors.c \
 	check_texture.c \
-	check_the_wall.c
+	check_the_wall.c \
+	raycasting_1.c \
+	try_to_print.c
 
 OBJS = $(SRC:.c=.o)
 

@@ -6,23 +6,12 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:14:15 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/12 14:48:18 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/16 13:48:45 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void    fill_inside_the_map_with_wall(t_cub *cub)
-{
-    int i;
-
-    i = 0;
-    while (cub->map_copy[i])
-    {
-        printf("%s\n", cub->map_copy[i]);
-        i++;
-    }
-}
 static int     check_first_line(t_cub *cub)
 {
     int i;
@@ -101,7 +90,6 @@ void    flood_the_wall(t_cub *cub)
         j = 0;
         i++;
     }
-    printf("Map is closed\n");
 }
 void    no_double_in_all(t_cub *cub)
 {

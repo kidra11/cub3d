@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:02:49 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/11 12:19:44 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/16 13:46:54 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void    get_path_texture(t_cub *cub)
             cub->data.ea = ft_copy(cub->textures_path[i], 3, ft_strlen(cub->textures_path[i]));
         i++;
     }
-    ft_printf("NO : %s\nSO : %s\nWE : %s\nEA : %s\n", cub->data.no, cub->data.so, cub->data.we, cub->data.ea);
 }
 
 void    check_path_correct(t_cub *cub)
@@ -87,5 +86,6 @@ void    check_texture(t_cub *cub)
 {
     check_1st_letter(cub);
     check_texture_path_1(cub);
-    //get_path_texture(cub);
+    get_path_texture(cub);
+    check_path_correct(cub);
 }

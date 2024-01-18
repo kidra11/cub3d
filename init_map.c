@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:11:10 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/12 11:50:01 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/16 13:51:33 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,16 @@ void    text_map_malloc(t_cub *cub)
 			|| cub->all[i][0] == 'E')
             {
 				cub->textures_path[x] = ft_copy(cub->all[i], 0, ft_strlen(cub->all[i]));
-				printf("cub->texture_path[%d] : %s\n", x, cub->textures_path[x]);
                 x++;
             }
         if (cub->all[i][0] == 'F' || cub->all[i][0] == 'C')
         {
             cub->couleurs_path[p] = ft_copy(cub->all[i], 0, ft_strlen(cub->all[i]));
-			printf("cub->coluer_path[%d] : %s\n", p, cub->couleurs_path[p]);
             p++;
         }
 		if (cub->all[i][0] == '1' || cub->all[i][0] == '0' || cub->all[i][0] == ' ' || cub->all[i][0] == '\t')
 		{
 			cub->map_copy[j] = ft_copy(cub->all[i], 0, ft_strlen(cub->all[i]));
-			printf("cub->all[%d] : %s\n", j, cub->map_copy[j]);
 			j++;
 		}
 		i++;
@@ -89,6 +86,4 @@ void    map_at_the_end_of_file(t_cub *cub)
         i++;
     if (cub->all[i - 1][0] != '1' && cub->all[i - 1][0] != ' ')
         clean_exit("Error\nMap not at the end of file", cub);
-    else
-        printf("Map at the end of file\n");
 }

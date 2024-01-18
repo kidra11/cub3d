@@ -10,3 +10,4 @@ si espaces vides dans la map, remplacer par des 0 ou 1(à voir)
 si espaces vides en dehors de la map, floodfill, ne peux pas etre entouré de 0
 checker s'il y a une ligne vide dans la map et gérer l'erreur
 gérer l'erreur du premier mur (i = 0) (while cub->map[i] si i != de 1 ou ' ')
+gérer les espaces vides

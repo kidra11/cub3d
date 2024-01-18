@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/15 16:45:28 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/17 16:06:01 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@
 
 # define SCREEN_WIDTH 600
 # define SCREEN_HEIGHT 600
+# define TEX_WIDTH 64
+# define TEX_HEIGHT 64
+
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_ESC 65307
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
 
 # define ESC 53
 # define LEFT 123
@@ -70,11 +82,32 @@ typedef struct	s_data
     char    *we;
     char    *ea;
    
-    int     player_pos_x;
-    int     player_pos_y;
-    
-    void    *mlx;
-    void    *mlx_win;
+    double     player_pos_x;
+    double     player_pos_y;
+    double     player_dir_x;
+    double     player_dir_y;
+    double     ray_dir_x;
+    double     ray_dir_y;
+    double     plane_x;
+    double     plane_y;
+    double     camera_x;
+    double     side_dist_x;
+    double     side_dist_y;
+    double     delta_dist_x;
+    double     delta_dist_y;
+    double     perp_wall_dist;
+    double     wall_x;
+    double     step;
+    double     tex_pos;
+    int        step_x;
+    int        step_y;
+    int        map_x;
+    int        map_y;
+
+    char       player;
+        
+    void       *mlx;
+    void       *mlx_win;
 
 }				t_data;
 
@@ -143,5 +176,15 @@ void    fill_inside_the_map_with_wall(t_cub *cub);
 void    flood_the_wall(t_cub *cub);
 void    no_double_in_all(t_cub *cub);
 
+//raycasting_1.c
+
+void    init_ray(t_cub *cub);
+int     trgb(int t, int r, int g, int b);
+void    my_mlx_pixel_put(t_img *data, int x, int y, int color);
+void    put_color_in_game(t_cub *cub);
+
+//try_to_print.c
+
+void    rendering(t_cub *cub);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by shiro             #+#    #+#             */
-/*   Updated: 2024/01/12 14:12:20 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/16 14:08:44 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,37 @@ void	is_cub_file(char *file)
 		}
 }
 
+void	where_is_bryan(t_cub *cub)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (cub->map_copy[i])
+	{
+		j = 0;
+		while (cub->map_copy[i][j])
+		{
+			if (cub->map_copy[i][j] == 'N' || cub->map_copy[i][j] == 'S' 
+				|| cub->map_copy[i][j] == 'E' || cub->map_copy[i][j] == 'W')
+			{
+				cub->data.player_pos_x = j;
+				cub->data.player_pos_y = i;
+				if (cub->map_copy[i][j] == 'N')
+					cub->data.player = 'N';
+				if (cub->map_copy[i][j] == 'S')
+					cub->data.player = 'S';
+				if (cub->map_copy[i][j] == 'E')
+					cub->data.player = 'E';
+				if (cub->map_copy[i][j] == 'W')
+					cub->data.player = 'W';
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 void	elements_in_map(t_cub *cub)
 {
 	int i; 
@@ -42,12 +73,6 @@ void	elements_in_map(t_cub *cub)
 				&& cub->map_copy[i][j] != 'S' && cub->map_copy[i][j] != 'E' && cub->map_copy[i][j] != 'W' 
 				&& cub->map_copy[i][j] != ' ')
 						exit(ft_printf("Error\nWrong character in map\n"));
-			if (cub->map_copy[i][j] == 'N' || cub->map_copy[i][j] == 'S' || cub->map_copy[i][j] == 'E' 
-				|| cub->map_copy[i][j] == 'W')
-        	{
-            	cub->data.player_pos_x = i;
-            	cub->data.player_pos_y = j;
-       		}
 			j++;
 		}
 		j = 0;
@@ -91,4 +116,6 @@ void	init_maps(char *file, t_cub *cub)
 	elements_in_map(cub);
 	check_colors(cub);
 	check_texture(cub);
+	where_is_bryan(cub);
+	printf("player pos x = %f\nplayer pos y = %f\nplayer = %c\n", cub->data.player_pos_x, cub->data.player_pos_y, cub->data.player);
 }
