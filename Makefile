@@ -6,7 +6,7 @@
 #    By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 15:28:04 by nsion             #+#    #+#              #
-#    Updated: 2024/01/15 16:48:03 by nathalie         ###   ########.fr        #
+#    Updated: 2024/01/18 13:52:25 by nathalie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC = main.c\
 	check_texture.c\
 	check_colors_1.c\
 	check_colors_2.c\
+	mlx_plus.c\
 	clean_exit.c\
 	testeur.c\
 	ft_printf/ft_printf.c\

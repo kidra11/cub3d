@@ -6,7 +6,7 @@
 /*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/16 18:15:00 by nathalie         ###   ########.fr       */
+/*   Updated: 2024/01/18 13:59:52 by nathalie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	main(int ac, char **av)
 	init_all_val(&cub);
 	init_file(&cub, av[1]);
 	ft_printf("Parsing done\n");
+	set_cub_env(&cub);
 	end_exit(&cub);
 	return (0);
 }

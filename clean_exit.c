@@ -6,7 +6,7 @@
 /*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:00:01 by nath              #+#    #+#             */
-/*   Updated: 2024/01/15 15:01:07 by nathalie         ###   ########.fr       */
+/*   Updated: 2024/01/18 16:26:57 by nathalie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ void	free_tab(char **tab)
 		free(tab);
 	}
 }
+
 //clean_all_exit = nettoie la variable all et affiche un message d'erreur
 //clean_exit = nettoie la variable all
