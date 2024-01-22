@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_colors_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:46:10 by nathalie          #+#    #+#             */
-/*   Updated: 2024/01/16 17:57:04 by nathalie         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:27:49 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,9 @@ void	check_if_between_0_255(t_cub *cub)
 	if (cub->data.blue_c < 0 || cub->data.blue_c > 255)
 		clean_exit("Error\nWrong color format\nPlease use as :\n\
 			F (0->255), (0->255), (0->255)", cub);
+}
+
+int	rgb(int r, int g, int b)
+{
+	return (r << 16 | g << 8 | b);
 }

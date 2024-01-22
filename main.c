@@ -3,45 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/16 18:15:00 by nathalie         ###   ########.fr       */
+/*   Updated: 2024/01/20 17:55:09 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	init_all_val(t_cub *cub)
-{
-	cub->lines_count = 0;
-	cub->all = NULL;
-	cub->colors = NULL;
-	cub->tex = NULL;
-	cub->map = NULL;
-	cub->data.no = NULL;
-	cub->data.so = NULL;
-	cub->data.we = NULL;
-	cub->data.ea = NULL;
-	cub->data.player_pos_x = 0;
-	cub->data.player_pos_y = 0;
-	cub->data.red_f = 0;
-	cub->data.green_f = 0;
-	cub->data.blue_f = 0;
-	cub->data.red_c = 0;
-	cub->data.green_c = 0;
-	cub->data.blue_c = 0;
-}
-
-void	init_file(t_cub *cub, char *file)
-{
-	cub->all = stock(file);
-	check_syntax(cub);
-	stock_elem(cub);
-	check_map(cub);
-	check_texture(cub);
-	check_colors(cub);
-}
 
 void	is_cub_file(char *file)
 {
@@ -58,6 +27,49 @@ void	is_cub_file(char *file)
 	}
 }
 
+int	get_mapx_size(t_cub *cub)
+{
+	int	i;
+	int	j;
+	int	count;
+	int	x_max;
+
+	i = 0;
+	x_max = 0;
+	while (cub->map[i])
+	{
+		j = 0;
+		count = 0;
+		while (cub->map[i][j])
+		{
+			if (cub->map[i][j] == '1' || cub->map[i][j] == '0'
+				|| cub->map[i][j] == ' ')
+				count++;
+			j++;
+		}
+		if (count > x_max)
+			x_max = count;
+		i++;
+	}
+	return (x_max);
+}
+
+int	get_mapy_size(t_cub *cub)
+{
+	int	i;
+
+	i = 0;
+	while (cub->map[i])
+		i++;
+	return (i);
+}
+
+int	end(t_cub *cub)
+{
+	end_exit(cub);
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	t_cub	cub;
@@ -68,6 +80,31 @@ int	main(int ac, char **av)
 	init_all_val(&cub);
 	init_file(&cub, av[1]);
 	ft_printf("Parsing done\n");
+
+	cub.data.map_width = get_mapx_size(&cub);
+	cub.data.map_height = get_mapy_size(&cub);
+	int i = 0;
+	while (cub.map[i])
+	{
+		ft_printf("%s\n", cub.map[i]);
+		i++;
+	}
+
+	cub.data.mlx = mlx_init();
+	cub.data.mlx_win = mlx_new_window(cub.data.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
+	init_player(&cub);
+	cub.img.img = mlx_new_image(cub.data.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	cub.img.addr = mlx_get_data_addr(cub.img.img, &cub.img.bits_per_pixel, &cub.img.line_length, &cub.img.endian);
+	draw_map(&cub);
+	draw_player(&cub);
+	printf("Player position: (%f, %f)\n", cub.player.pos_x, cub.player.pos_y);
+	printf("Player direction: %f radians\n", cub.player.pa);
+	printf("Ray direction: %f radians\n", cub.ray.ra);
+	mlx_hook(cub.data.mlx_win, 17, 0, end, &cub);
+	mlx_hook(cub.data.mlx_win, 2, 0, key_move, &cub);
+	mlx_hook(cub.data.mlx_win, 3, 0, key_move_release, &cub);
+	mlx_loop(cub.data.mlx);
+
 	end_exit(&cub);
 	return (0);
 }

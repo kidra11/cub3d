@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/16 18:19:41 by nathalie         ###   ########.fr       */
+/*   Updated: 2024/01/21 22:15:33 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,55 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# define SCREEN_WIDTH 1024
+# define SCREEN_HEIGHT 510
+
+# define PI 3.14159265359
+# define DR 0.0174533
+
+typedef struct s_img
+{
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+}				t_img;
+
+typedef struct s_ray
+{
+	double		ra;
+	double		rx;
+	double		ry;
+}				t_ray;
+
+typedef struct s_player
+{
+	double		pos_x;
+	double		pos_y;
+	double		pdx;
+	double		pdy;
+	double		pa;
+}				t_player;
+
 typedef struct s_data
 {
-	int		red_f;
-	int		green_f;
-	int		blue_f;
-	int		red_c;
-	int		green_c;
-	int		blue_c;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	int		player_pos_x;
-	int		player_pos_y;
+	void		*mlx;
+	void		*mlx_win;
+	int			red_f;
+	int			green_f;
+	int			blue_f;
+	int			red_c;
+	int			green_c;
+	int			blue_c;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	int			map_width;
+	int			map_height;
+	int			player_pos_x;
+	int			player_pos_y;
 }				t_data;
 
 typedef struct s_cub
@@ -44,8 +79,11 @@ typedef struct s_cub
 	char		**map;
 	char		**tex;
 	char		**colors;
+	t_player	player;
 	t_data		data;
-}			t_cub;
+	t_img		img;
+	t_ray		ray;
+}				t_cub;
 
 //clean_exit.c
 void	clean_all_exit(char *message, t_cub *cub);
@@ -64,6 +102,9 @@ void	check_colors(t_cub *cub);
 void	get_f_color(t_cub *cub, int i);
 void	get_c_color(t_cub *cub, int i);
 void	check_if_between_0_255(t_cub *cub);
+
+int		rgb(int r, int g, int b);
+
 
 //check_textures.c
 void	check_1st_letter(t_cub *cub);
@@ -100,5 +141,31 @@ void	is_cub_file(char *file);
 
 //testeur.c
 void	printf_tab(char **all, char *name);
+
+//init.c
+void	init_all_val(t_cub *cub);
+void	init_file(t_cub *cub, char *file);
+void	init_player(t_cub *cub);
+void	init_ray(t_cub *cub);
+
+//handle_key.c
+int		key_move(int keycode, t_cub *cub);
+int		key_move_release(int keycode, t_cub *cub);
+
+//draw.c
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+void	draw_map(t_cub *cub);
+void	draw_player(t_cub *cub);
+void	draw_point(t_cub *cub, int x, int y, int size, int color);
+void	draw_line(t_cub *cub, int x1, int y1, int x2, int y2, int color);
+
+//raycast.c
+void	draw_ray(t_cub *cub, int psize);
+void	draw_thick_line(t_cub *cub, int x1, int y1, int x2, int y2, int thickness, int color);
+
+int		end(t_cub *cub);
+
+int		get_mapx_size(t_cub *cub);
+int		get_mapy_size(t_cub *cub);
 
 #endif

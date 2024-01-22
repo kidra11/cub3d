@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stock_elem.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 20:01:30 by nath              #+#    #+#             */
-/*   Updated: 2024/01/15 16:53:49 by nathalie         ###   ########.fr       */
+/*   Updated: 2024/01/16 20:19:32 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	count_elem(t_cub *cub, int choise)
 			cub->all[i][0] == 'W' || cub->all[i][0] == 'E'))
 			result++;
 		if (choise == 2 && (cub->all[i][0] == 'F' || cub->all[i][0] == 'C'))
-				result++;
+			result++;
 		if (choise == 3 && (cub->all[i][0] == '1' || cub->all[i][0] == '0' || \
 			cub->all[i][0] == ' ' || cub->all[i][0] == '\t'))
 			result++;
@@ -93,15 +93,15 @@ void	stock_elem(t_cub *cub)
 	cub->tex = malloc((count_elem(cub, 1) + 1) * sizeof (char *));
 	if (!cub->tex)
 		cub->tex = NULL;
-	cub->tex[count_elem(cub, 1)] = '\0';
+	cub->tex[count_elem(cub, 1)] = NULL;
 	cub->colors = malloc((count_elem(cub, 2) + 1) * sizeof (char *));
 	if (!cub->colors)
 		cub->colors = NULL;
-	cub->colors[count_elem(cub, 2)] = '\0';
+	cub->colors[count_elem(cub, 2)] = NULL;
 	cub->map = malloc((count_elem(cub, 3) + 1) * sizeof (char *));
 	if (!cub->map)
 		cub->map = NULL;
-	cub->map[count_elem(cub, 3)] = '\0';
+	cub->map[count_elem(cub, 3)] = NULL;
 	text_map_malloc(cub);
 }
 
