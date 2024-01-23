@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nsion <nsion@student.42.fr>                +#+  +:+       +#+         #
+#    By: nath <nath@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 15:28:04 by nsion             #+#    #+#              #
-#    Updated: 2024/01/23 15:03:44 by nsion            ###   ########.fr        #
+#    Updated: 2024/01/23 17:33:53 by nath             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC = main.c\
 	stock_elem.c\
 	check_map_1.c\
 	check_map_2.c\
+	new_map.c\
 	check_texture.c\
 	check_colors_1.c\
 	check_colors_2.c\

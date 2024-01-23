@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nath <nath@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:53:27 by nath              #+#    #+#             */
-/*   Updated: 2024/01/23 15:57:30 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/23 19:07:40 by nath             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	check_map(t_cub *cub)
 	if (!check_first_line(cub) || !check_last_line(cub) \
 		|| !check_first_column(cub))
 		clean_exit("Error\nMap is not closed outside", cub);
+	new_map(cub);
 	flood_the_wall(cub);
 	elements_in_map(cub);
 	where_is_the_player(cub);

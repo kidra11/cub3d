@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nath <nath@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/23 15:46:26 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/23 17:37:11 by nath             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ void	elements_in_map(t_cub *cub);
 void    where_is_the_player(t_cub *cub);
 void    where_the_player_is_looking_1(t_cub *cub);
 void    where_the_player_is_looking_2(t_cub *cub);
+
+//new_map.
+int longest_line(char **map);
+char *fill_the_line(int len);
+void    new_map(t_cub *cub);
 
 //stock_elem.c
 int		count_elem(t_cub *cub, int choise);
