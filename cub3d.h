@@ -6,15 +6,15 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/23 19:01:12 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/23 20:45:08 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "./includes/mlx/mlx.h"
-# include "./includes/libft/libft.h"
+# include "./mlx/mlx.h"
+# include "./libft/libft.h"
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
@@ -173,11 +173,17 @@ void	draw_point(t_cub *cub, int x, int y, int color);
 void	draw_line(t_cub *cub, int x1, int y1, int x2, int y2, int color);
 void	draw_thick_line(t_cub *cub, int x1, int y1, int x2, int y2, int thickness, int color);
 
-//raycast.c
-void	draw_ray(t_cub *cub, int psize);
+//raycast1.c
+void	draw_ray(t_cub *cub);
 void	check_full_rota(t_cub *cub);
-void	horizontal_check(t_cub *cub, int *dof, double a_tan);
 double	dist(double ax, double ay, double bx, double by);
+
+//raycast2.c
+void	horizontal_check(t_cub *cub, int *dof, double a_tan);
+void	horizontal_hit(t_cub *cub, int *dof);
+void	vertical_check(t_cub *cub, int *dof, double n_tan);
+void	vertical_hit(t_cub *cub, int *dof);
+void	closest_ray(t_cub *cub);
 
 //main.c
 int		end(t_cub *cub);
