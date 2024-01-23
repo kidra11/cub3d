@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stock_elem.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 20:01:30 by nath              #+#    #+#             */
-/*   Updated: 2024/01/15 16:53:49 by nathalie         ###   ########.fr       */
+/*   Updated: 2024/01/23 14:50:09 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ void	elements_in_map(t_cub *cub)
 				cub->map[i][j] != 'E' && cub->map[i][j] != 'W' && \
 				cub->map[i][j] != ' ')
 				exit(ft_printf("Error\nWrong character in map\n"));
-			if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S' || \
-				cub->map[i][j] == 'E' || cub->map[i][j] == 'W')
-			{
-				cub->data.player_pos_x = i;
-				cub->data.player_pos_y = j;
-			}
 			j++;
 		}
 		j = 0;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+         #
+#    By: bbach <bbach@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 15:28:04 by nsion             #+#    #+#              #
-#    Updated: 2024/01/15 16:48:03 by nathalie         ###   ########.fr        #
+#    Updated: 2024/01/23 15:05:48 by bbach            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC = main.c\
 	ft_printf/ft_printf.c\
 	ft_printf/ft_find.c\
 	get_next_line/get_next_line.c\
-	get_next_line/get_next_line_utils.c
+	get_next_line/get_next_line_utils.c\
+	where_is_bryan.c\
 
 OBJS = $(SRC:.c=.o)
 

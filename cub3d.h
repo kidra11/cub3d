@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/16 18:19:41 by nathalie         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:06:10 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,26 @@
 
 typedef struct s_data
 {
-	int		red_f;
-	int		green_f;
-	int		blue_f;
-	int		red_c;
-	int		green_c;
-	int		blue_c;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	int		player_pos_x;
-	int		player_pos_y;
+	int			red_f;
+	int			green_f;
+	int			blue_f;
+	int			red_c;
+	int			green_c;
+	int			blue_c;
+	
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	
+	double		player_pos_x;
+	double		player_pos_y;
+	double		player_look_dir_x;
+	double		player_look_dir_y;
+	double		player_plane_x;
+	double		player_plane_y;
+	
+	char		player;
 }				t_data;
 
 typedef struct s_cub
@@ -100,5 +108,11 @@ void	is_cub_file(char *file);
 
 //testeur.c
 void	printf_tab(char **all, char *name);
+
+//where_is_bryan.c
+
+void	where_is_the_player(t_cub *cub);
+void	where_the_player_is_looking_1(t_cub *cub);
+void	where_the_player_is_looking_2(t_cub *cub);
 
 #endif
