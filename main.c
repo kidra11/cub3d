@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/23 15:31:35 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/23 19:04:42 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	main(int ac, char **av)
 		ft_printf("%s\n", cub.map[i]);
 		i++;
 	}
-
 	cub.data.mlx = mlx_init();
 	cub.data.mlx_win = mlx_new_window(cub.data.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
 	init_player(&cub);

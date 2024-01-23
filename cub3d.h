@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/23 16:14:29 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/23 19:01:12 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ typedef struct s_ray
 	double		yo;
 	int			mx;
 	int			my;
+	double		hx;
+	double		hy;
+	double		dist_h;
+	double		vx;
+	double		vy;
+	double		dist_v;
+	double		dist_f;
 }				t_ray;
 
 typedef struct s_player
@@ -164,14 +171,16 @@ void	draw_player(t_cub *cub);
 void	draw_player_pos(t_cub *cub, int x, int y, int size);
 void	draw_point(t_cub *cub, int x, int y, int color);
 void	draw_line(t_cub *cub, int x1, int y1, int x2, int y2, int color);
+void	draw_thick_line(t_cub *cub, int x1, int y1, int x2, int y2, int thickness, int color);
 
 //raycast.c
 void	draw_ray(t_cub *cub, int psize);
-void	draw_thick_line(t_cub *cub, int x1, int y1, int x2, int y2, int thickness, int color);
-
-int		end(t_cub *cub);
+void	check_full_rota(t_cub *cub);
+void	horizontal_check(t_cub *cub, int *dof, double a_tan);
+double	dist(double ax, double ay, double bx, double by);
 
 //main.c
+int		end(t_cub *cub);
 int		get_mapx_size(t_cub *cub);
 int		get_mapy_size(t_cub *cub);
 

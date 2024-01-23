@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:12:17 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/23 16:20:43 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/23 19:03:38 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void draw_point(t_cub *cub, int x, int y, int color)
 		cub->img.img, 0, 0);
 }
 
-void draw_player_pos(t_cub *cub, int x, int y, int size)
+void	draw_player_pos(t_cub *cub, int x, int y, int size)
 {
 	int	i;
 	int	j;
@@ -83,6 +83,7 @@ void draw_line(t_cub *cub, int x1, int y1, int x2, int y2, int color)
         }
     }
 }
+
 void draw_thick_line(t_cub *cub, int x1, int y1, int x2, int y2, int thickness, int color)
 {
     for (int i = 0; i < thickness; i++)
