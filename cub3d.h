@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/21 22:15:33 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/23 16:14:29 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,19 @@ typedef struct s_ray
 	double		ra;
 	double		rx;
 	double		ry;
+	double		xo;
+	double		yo;
+	int			mx;
+	int			my;
 }				t_ray;
 
 typedef struct s_player
 {
 	double		pos_x;
 	double		pos_y;
+	double		pa;
 	double		pdx;
 	double		pdy;
-	double		pa;
 }				t_player;
 
 typedef struct s_data
@@ -66,6 +70,7 @@ typedef struct s_data
 	char		*so;
 	char		*we;
 	char		*ea;
+	int			map_size;
 	int			map_width;
 	int			map_height;
 	int			player_pos_x;
@@ -156,7 +161,8 @@ int		key_move_release(int keycode, t_cub *cub);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 void	draw_map(t_cub *cub);
 void	draw_player(t_cub *cub);
-void	draw_point(t_cub *cub, int x, int y, int size, int color);
+void	draw_player_pos(t_cub *cub, int x, int y, int size);
+void	draw_point(t_cub *cub, int x, int y, int color);
 void	draw_line(t_cub *cub, int x1, int y1, int x2, int y2, int color);
 
 //raycast.c
@@ -165,6 +171,7 @@ void	draw_thick_line(t_cub *cub, int x1, int y1, int x2, int y2, int thickness, 
 
 int		end(t_cub *cub);
 
+//main.c
 int		get_mapx_size(t_cub *cub);
 int		get_mapy_size(t_cub *cub);
 

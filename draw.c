@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:12:17 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/21 23:19:57 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/23 16:20:43 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,27 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void draw_point(t_cub *cub, int x, int y, int size, int color)
+void draw_point(t_cub *cub, int x, int y, int color)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i <= cub->data.map_size)
+	{
+		j = 0;
+		while (j <= cub->data.map_size)
+		{
+			my_mlx_pixel_put(&cub->img, x + i, y + j, color);
+			j++;
+		}
+		i++;
+	}
+	mlx_put_image_to_window(cub->data.mlx, cub->data.mlx_win,
+		cub->img.img, 0, 0);
+}
+
+void draw_player_pos(t_cub *cub, int x, int y, int size)
 {
 	int	i;
 	int	j;
@@ -31,7 +51,7 @@ void draw_point(t_cub *cub, int x, int y, int size, int color)
 		j = 0;
 		while (j <= size)
 		{
-			my_mlx_pixel_put(&cub->img, x + i, y + j, color);
+			my_mlx_pixel_put(&cub->img, x + i, y + j, rgb(255, 255, 0));
 			j++;
 		}
 		i++;
@@ -71,37 +91,11 @@ void draw_thick_line(t_cub *cub, int x1, int y1, int x2, int y2, int thickness, 
     }
 }
 
-/*void draw_line(t_cub *cub, int x1, int y1, int x2, int y2, int color)
-{
-    int dx = abs(x2 - x1);
-    int dy = abs(y2 - y1);
-    int sx = x1 < x2 ? 1 : -1;
-    int sy = y1 < y2 ? 1 : -1;
-    int err = dx - dy;
-
-    while (1) {
-        draw_point(cub, x1, y1, 1, color);
-        if (x1 == x2 && y1 == y2)
-            break;
-        int e2 = 2 * err;
-        if (e2 > -dy) {
-            err -= dy;
-            x1 += sx;
-        }
-        if (e2 < dx) {
-            err += dx;
-            y1 += sy;
-        }
-    }
-}*/
-
 void	draw_map(t_cub *cub)
 {
 	int	i;
 	int	j;
-	int	size;
 
-	size = 64;
 	i = 0;
 	while (cub->map[i])
 	{
@@ -109,9 +103,11 @@ void	draw_map(t_cub *cub)
 		while (cub->map[i][j])
 		{
 			if (cub->map[i][j] == '1')
-				draw_point(cub, j * size, i * size, size, rgb(255, 255, 255));
+				draw_point(cub, j * cub->data.map_size, i * cub->data.map_size,
+					rgb(255, 255, 255));
 			else if (cub->map[i][j] == '0')
-				draw_point(cub, j * size, i * size, size, rgb(0, 0, 0));
+				draw_point(cub, j * cub->data.map_size, i * cub->data.map_size,
+					rgb(0, 0, 0));
 			j++;
 		}
 		i++;
@@ -123,10 +119,9 @@ void	draw_player(t_cub *cub)
 	int	size;
 
 	size = 10;
-	draw_point(cub, cub->player.pos_x, cub->player.pos_y,
-		size, rgb(255, 255, 0));
+	draw_player_pos(cub, cub->player.pos_x, cub->player.pos_y, size);
 	draw_line(cub, cub->player.pos_x + size / 2, cub->player.pos_y + size / 2,
-		cub->player.pos_x + cub->player.pdx * 5,
-		cub->player.pos_y + cub->player.pdy * 5, rgb(255, 255, 0));
+		cub->player.pos_x + cub->player.pdx * 10,
+		cub->player.pos_y + cub->player.pdy * 10, rgb(255, 255, 0));
 	draw_ray(cub, size);
 }

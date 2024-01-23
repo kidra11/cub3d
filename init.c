@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:24:58 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/20 17:45:52 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/23 16:06:11 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	init_all_val(t_cub *cub)
 	cub->colors = NULL;
 	cub->tex = NULL;
 	cub->map = NULL;
+	cub->data.map_size = 64;
+	cub->data.map_width = 0;
+	cub->data.map_height = 0;
 	cub->data.no = NULL;
 	cub->data.so = NULL;
 	cub->data.we = NULL;
@@ -57,4 +60,8 @@ void	init_ray(t_cub *cub)
 	cub->ray.ra = cub->player.pa;
 	cub->ray.rx = cos(cub->ray.ra);
 	cub->ray.ry = sin(cub->ray.ra);
+	cub->ray.xo = 0;
+	cub->ray.yo = 0;
+	cub->ray.mx = 0;
+	cub->ray.my = 0;
 }

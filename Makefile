@@ -6,7 +6,7 @@
 #    By: lthong <lthong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 15:28:04 by nsion             #+#    #+#              #
-#    Updated: 2024/01/22 16:59:36 by lthong           ###   ########.fr        #
+#    Updated: 2024/01/22 17:13:21 by lthong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ fclean : clean
 
 re : fclean all
 
-mac : 
+mac : $(OBJS)
 	@${CC} ${CFLAGS} $(LIB) $(MLXMAC) $(OBJS) -o ${NAME}
 	@echo "\033[32mDone !\033[0m"
 
