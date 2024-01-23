@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nathalie <nathalie@student.42.fr>          +#+  +:+       +#+         #
+#    By: nsion <nsion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 15:28:04 by nsion             #+#    #+#              #
-#    Updated: 2024/01/18 13:52:25 by nathalie         ###   ########.fr        #
+#    Updated: 2024/01/23 11:21:38 by nsion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,19 +18,21 @@ SRC = main.c\
 	check_texture.c\
 	check_colors_1.c\
 	check_colors_2.c\
-	mlx_plus.c\
 	clean_exit.c\
 	testeur.c\
-	ft_printf/ft_printf.c\
-	ft_printf/ft_find.c\
-	get_next_line/get_next_line.c\
-	get_next_line/get_next_line_utils.c
+	init.c\
+	draw.c\
+	raycast.c\
+	handle_key.c\
 
-OBJS = $(SRC:.c=.o)
+OBJS = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
+
+SRC_DIR = src/
+OBJ_DIR = obj/
 
 RM = rm -f
 
-NAME = cub3d
+NAME = cub3D
 
 LMLX = ./includes/mlx/libmlx.a
 
@@ -48,11 +50,12 @@ ${LMLX}:
 ${LIB} :
 	make -s -C ./includes/libft/ all
 
-%.o : %.c
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
 	@${CC} ${CFLAGS} -I/usr/includes -Imlx -O3 -c $< -o $@
 
 $(NAME) : $(OBJS) ${LIB} ${LMLX}
-	@${CC} ${CFLAGS} $(OBJS) -L./includes/libft -lft -L./includes/mlx/ -lmlx -L/usr/lib/ -I./mlx/ -lXext -lX11 -lm -o ${NAME}
+	@${CC} ${CFLAGS} $(OBJS) $(LIB) -L./includes/mlx/ -lmlx -L/usr/lib/ -I./mlx/ -lXext -lX11 -lm -o ${NAME}
 	@echo "\033[32mDone !\033[0m"
 
 clean :
