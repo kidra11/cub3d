@@ -6,11 +6,20 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:29:05 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/17 15:56:28 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/24 15:51:44 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+unsigned int get_pixel_color(t_cub *cub, int x, int y)
+{
+    char *pixel_address = cub->data.no_img.addr + (y * cub->data.no_img.line_length + x * (cub->data.no_img.bits_per_pixel / 8));
+
+    unsigned int color = *(unsigned int *)pixel_address;
+
+    return color;
+}
 
 void    rendering(t_cub *cub)
 {
@@ -22,7 +31,7 @@ void    rendering(t_cub *cub)
     int pitch;
     int draw_start;
     int draw_end;
-    int text_num;
+    //int text_num;
     int text_x;
     int text_y;
 
@@ -106,7 +115,7 @@ void    rendering(t_cub *cub)
             draw_end = SCREEN_HEIGHT - 1;
 
         //calcul de la texture
-        text_num = cub->map_copy[cub->data.map_y][cub->data.map_x] - 1;
+        //text_num = cub->map_copy[cub->data.map_y][cub->data.map_x] - 1;
 
         if (side == 0)
             cub->data.wall_x = cub->data.player_pos_y + cub->data.perp_wall_dist * cub->data.ray_dir_y;
@@ -129,15 +138,14 @@ void    rendering(t_cub *cub)
         cub->data.tex_pos = (draw_start - pitch - SCREEN_HEIGHT / 2 + line_height / 2) * cub->data.step;
         
         y = draw_start;
-
         while (y < draw_end)
         {
             text_y = (int)cub->data.tex_pos & (TEX_HEIGHT - 1);
             cub->data.tex_pos += cub->data.step;
-            unsigned int color = cub->textures_path[text_num][TEX_HEIGHT * text_y + text_x];
+            unsigned int color = get_pixel_color(cub, text_x, text_y);
             if (side == 1)
                 color = (color >> 1) & 8355711;
-            my_mlx_pixel_put(&cub->img, x, y, cub->textures_path[text_num][TEX_HEIGHT * text_y + text_x]);
+            my_mlx_pixel_put(cub->img, x, y, color);
             y++;
         }
         x++;

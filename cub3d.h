@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/17 16:06:01 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/24 14:47:04 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ typedef struct	s_data
     char    *so;
     char    *we;
     char    *ea;
-   
+    
     double     player_pos_x;
     double     player_pos_y;
     double     player_dir_x;
@@ -109,6 +109,11 @@ typedef struct	s_data
     void       *mlx;
     void       *mlx_win;
 
+    t_img      no_img;
+    t_img      so_img;
+    t_img      ea_img;
+    t_img      we_img;
+    
 }				t_data;
 
 typedef struct s_cub
@@ -119,7 +124,7 @@ typedef struct s_cub
     char        **textures_path;
     char        **couleurs_path;
     t_data      data;
-    t_img       img;
+    t_img       *img;
 }            t_cub;
 
 //main.C
@@ -178,6 +183,9 @@ void    no_double_in_all(t_cub *cub);
 
 //raycasting_1.c
 
+void    get_image_and_get_adress(t_cub *cub);
+void    init_img(t_img *img);
+void    init_data(t_data *data);
 void    init_ray(t_cub *cub);
 int     trgb(int t, int r, int g, int b);
 void    my_mlx_pixel_put(t_img *data, int x, int y, int color);
