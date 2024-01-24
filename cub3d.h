@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/21 22:15:33 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/24 15:58:15 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@
 
 # define SCREEN_WIDTH 1024
 # define SCREEN_HEIGHT 510
+
+# define ESC 65307
+# define Z 122
+# define S 115
+# define Q 113
+# define D 100
+# define RIGHT 65363
+# define LEFT 65361
 
 # define PI 3.14159265359
 # define DR 0.0174533
@@ -136,6 +144,7 @@ char	**stock(char *file);
 
 //main.c
 void	init_all_val(t_cub *cub);
+int		end(t_cub *cub);
 void	init_file(t_cub *cub, char *file);
 void	is_cub_file(char *file);
 

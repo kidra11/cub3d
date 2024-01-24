@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:16:42 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/22 18:36:30 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/24 16:00:39 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,29 @@
 
 int	key_move(int keycode, t_cub *cub)
 {
-	if (keycode == 122) //z
+	if (keycode == ESC) //esc
+		end(cub);
+	if (keycode == Z) //z
 	{
 		cub->player.pos_x += cub->player.pdx;
 		cub->player.pos_y += cub->player.pdy;
 	}
-	if (keycode == 115) //s
+	if (keycode == S) //s
 	{
 		cub->player.pos_x -= cub->player.pdx;
 		cub->player.pos_y -= cub->player.pdy;
 	}
-	if (keycode == 113) //q
+	if (keycode == Q) //q
+	{
+		cub->player.pos_x += cub->player.pdy;
+		cub->player.pos_y -= cub->player.pdx;
+	}
+	if (keycode == D) //d
+	{
+		cub->player.pos_x -= cub->player.pdy;
+		cub->player.pos_y += cub->player.pdx;
+	}
+	if (keycode == LEFT) //LEFT
 	{
 		cub->player.pa -= 0.1;
 		if (cub->player.pa < 0)
@@ -32,7 +44,7 @@ int	key_move(int keycode, t_cub *cub)
 		cub->player.pdx = cos(cub->player.pa) * 5;
 		cub->player.pdy = sin(cub->player.pa) * 5;
 	}
-	if (keycode == 100) //d
+	if (keycode == RIGHT) //RIGHT
 	{
 		cub->player.pa += 0.1;
 		if (cub->player.pa > 2 * PI)
