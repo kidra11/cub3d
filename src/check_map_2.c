@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 15:02:58 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/23 15:58:00 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/24 13:58:03 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ void	elements_in_map(t_cub *cub)
 
 	i = 0;
 	count = 0;
-	while (cub->map[i])
+	while (cub->new_map[i])
 	{
 		j = 0;
-		while (cub->map[i][j])
+		while (cub->new_map[i][j])
 		{
-			if (cub->map[i][j] != '1' && cub->map[i][j] != '0' && \
-				cub->map[i][j] != 'N' && cub->map[i][j] != 'S' && \
-				cub->map[i][j] != 'E' && cub->map[i][j] != 'W' && \
-				cub->map[i][j] != ' ')
+			if (cub->new_map[i][j] != '1' && cub->new_map[i][j] != '0' && \
+				cub->new_map[i][j] != 'N' && cub->new_map[i][j] != 'S' && \
+				cub->new_map[i][j] != 'E' && cub->new_map[i][j] != 'W' && \
+				cub->new_map[i][j] != ' ')
 				clean_exit("Error : Wrong element in map\n", cub);
-			else if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S' || \
-				cub->map[i][j] == 'E' || cub->map[i][j] == 'W')
+			else if (cub->new_map[i][j] == 'N' || cub->new_map[i][j] == 'S' || \
+				cub->new_map[i][j] == 'E' || cub->new_map[i][j] == 'W')
 				count++;
 			j++;
 		}
@@ -47,17 +47,17 @@ void	where_is_the_player(t_cub *cub)
 	int	j;
 
 	i = 0;
-	while (cub->map[i])
+	while (cub->new_map[i])
 	{
 		j = 0;
-		while (cub->map[i][j])
+		while (cub->new_map[i][j])
 		{
-			if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S' || \
-				cub->map[i][j] == 'W' || cub->map[i][j] == 'E')
+			if (cub->new_map[i][j] == 'N' || cub->new_map[i][j] == 'S' || \
+				cub->new_map[i][j] == 'W' || cub->new_map[i][j] == 'E')
 			{
 				cub->data.player_pos_x = j;
 				cub->data.player_pos_y = i;
-				cub->data.player = cub->map[i][j];
+				cub->data.player = cub->new_map[i][j];
 				return ;
 			}
 			j++;

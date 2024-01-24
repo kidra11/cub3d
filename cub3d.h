@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nath <nath@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/23 17:37:11 by nath             ###   ########.fr       */
+/*   Updated: 2024/01/24 14:20:01 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ typedef struct s_data
 	char	*so;
 	char	*we;
 	char	*ea;
-	double		player_pos_x;
-	double		player_pos_y;
-	double		player_look_dir_x;
-	double		player_look_dir_y;
-	double		player_plane_x;
-	double		player_plane_y;
+	double	player_pos_x;
+	double	player_pos_y;
+	double	player_look_dir_x;
+	double	player_look_dir_y;
+	double	player_plane_x;
+	double	player_plane_y;
 	char	player;
 }				t_data;
 
@@ -47,6 +47,7 @@ typedef struct s_cub
 	int			lines_count;
 	char		**all;
 	char		**map;
+	char		**new_map;
 	char		**tex;
 	char		**colors;
 	t_data		data;
@@ -83,14 +84,15 @@ void	check_map(t_cub *cub);
 
 //check_map_2.c
 void	elements_in_map(t_cub *cub);
-void    where_is_the_player(t_cub *cub);
-void    where_the_player_is_looking_1(t_cub *cub);
-void    where_the_player_is_looking_2(t_cub *cub);
+void	where_is_the_player(t_cub *cub);
+void	where_the_player_is_looking_1(t_cub *cub);
+void	where_the_player_is_looking_2(t_cub *cub);
 
 //new_map.
-int longest_line(char **map);
-char *fill_the_line(int len);
-void    new_map(t_cub *cub);
+int		longest_line(char **map);
+char	*fill_the_line(int len);
+void	fill_the_map(t_cub *cub);
+void	new_map(t_cub *cub);
 
 //stock_elem.c
 int		count_elem(t_cub *cub, int choise);

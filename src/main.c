@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/23 14:56:58 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/24 14:07:43 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	init_all_val(t_cub *cub)
 	cub->colors = NULL;
 	cub->tex = NULL;
 	cub->map = NULL;
+	cub->new_map = NULL;
 	cub->data.no = NULL;
 	cub->data.so = NULL;
 	cub->data.we = NULL;

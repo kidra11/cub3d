@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:00:01 by nath              #+#    #+#             */
-/*   Updated: 2024/01/23 14:56:53 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/24 13:58:40 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	clean_exit(char *message, t_cub *cub)
 		free_tab(cub->colors);
 	if (cub->map)
 		free_tab(cub->map);
+	if (cub->new_map)
+		free_tab(cub->new_map);
 	if (cub->data.no)
 		free(cub->data.no);
 	if (cub->data.so)
@@ -64,6 +66,8 @@ void	end_exit(t_cub *cub)
 		free_tab(cub->colors);
 	if (cub->map)
 		free_tab(cub->map);
+	if (cub->new_map)
+		free_tab(cub->new_map);
 	if (cub->data.no)
 		free(cub->data.no);
 	if (cub->data.so)
