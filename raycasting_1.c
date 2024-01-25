@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 13:31:46 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/24 15:56:51 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/25 14:15:39 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,13 @@ void    get_image_and_get_adress(t_cub *cub)
 
     cub->data.no_img.addr = mlx_get_data_addr(cub->data.no_img.img, &cub->data.no_img.bits_per_pixel, &cub->data.no_img.line_length, &cub->data.no_img.endian);
     cub->data.so_img.addr = mlx_get_data_addr(cub->data.so_img.img, &cub->data.so_img.bits_per_pixel, &cub->data.so_img.line_length, &cub->data.so_img.endian);
-    printf("ici 2222222?\n");
     cub->data.ea_img.addr = mlx_get_data_addr(cub->data.ea_img.img, &cub->data.ea_img.bits_per_pixel, &cub->data.ea_img.line_length, &cub->data.ea_img.endian);
-    printf("ici 3333333?\n");
     cub->data.we_img.addr = mlx_get_data_addr(cub->data.we_img.img, &cub->data.we_img.bits_per_pixel, &cub->data.we_img.line_length, &cub->data.we_img.endian);
-    printf("ici 4444444?\n");
 }
 
-int	trgb(int t, int r, int g, int b)
+int	trgb(int r, int g, int b)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	return (r << 16 | g << 8 | b);
 }
 
 
@@ -110,37 +107,46 @@ void    put_color_in_game(t_cub *cub)
 	y = 0;
     init_data(&cub->data);
     init_ray(cub);
-    printf("ici 1111111?\n");
     get_image_and_get_adress(cub);
-    printf("ici 5555555?\n");
 	while (x < SCREEN_HEIGHT)
 	{
 		y = 0;
 		while (y < SCREEN_WIDTH / 2)
 		{
-            if (cub->img)
-            {
-                //printf("ici 6666666?\n");
-			    my_mlx_pixel_put((cub->img), x, y, trgb(0, cub->data.red_f, cub->data.green_f, cub->data.blue_f));
-            }
-            else
-            {
-                printf("ici 8888888?\n"); 
-                return;
-            }
+			    my_mlx_pixel_put(cub->img, x, y, trgb( cub->data.red_f, cub->data.green_f, cub->data.blue_f));
             y++;
 		}
 		while (y < SCREEN_WIDTH)
 		{
-            //printf("ici 7777777?\n");
-			my_mlx_pixel_put((cub->img), x, y, trgb(0, cub->data.red_c, cub->data.green_c, cub->data.blue_c));
+			my_mlx_pixel_put(cub->img, x, y, trgb( cub->data.red_c, cub->data.green_c, cub->data.blue_c));
 			y++;
 		}
 		x++;
 	}
-    mlx_put_image_to_window(cub->data.mlx, cub->data.mlx_win, cub->img->img, 0, 0); 
-    printf("ici 9999999?\n");
+    mlx_put_image_to_window(cub->data.mlx, cub->data.mlx_win, cub->img->img, 600, 600); 
+    printf("player_dir_x = %f\n", cub->data.player_dir_x);
     rendering(cub);
-    printf("ici 10\n");
 	//mlx_put_image_to_window(cub->data.mlx, cub->data.mlx_win, cub->img->img, 0, 0);
 }
+
+// void	put_color_in_game(t_cub *cub)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 0;
+// 	while (i < 600)
+// 	{
+// 		j = 0;
+// 		while (j < 600)
+// 		{
+// 			if (i < 600 / 2)
+// 				my_mlx_pixel_put(cub->img, j, i, trgb(0, 0, 0, 255));
+// 			else
+// 				my_mlx_pixel_put(cub->img, j, i, trgb(0, 255, 0, 0));
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+//     //mlx_put_image_to_window(cub->data.mlx, cub->data.mlx_win, cub->img->img, 0, 0);
+// }

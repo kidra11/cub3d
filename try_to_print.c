@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:29:05 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/24 15:51:44 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/25 13:33:26 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void    rendering(t_cub *cub)
     int pitch;
     int draw_start;
     int draw_end;
-    //int text_num;
+   // int text_num;
     int text_x;
     int text_y;
 
@@ -142,10 +142,9 @@ void    rendering(t_cub *cub)
         {
             text_y = (int)cub->data.tex_pos & (TEX_HEIGHT - 1);
             cub->data.tex_pos += cub->data.step;
+            //printf("text_x = %d\ntext_y = %d\n", text_x, text_y);
             unsigned int color = get_pixel_color(cub, text_x, text_y);
-            if (side == 1)
-                color = (color >> 1) & 8355711;
-            my_mlx_pixel_put(cub->img, x, y, color);
+            my_mlx_pixel_put(cub->img, text_x, text_y, color);
             y++;
         }
         x++;

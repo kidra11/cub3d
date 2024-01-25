@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/24 14:47:04 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/25 14:15:05 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ void    get_image_and_get_adress(t_cub *cub);
 void    init_img(t_img *img);
 void    init_data(t_data *data);
 void    init_ray(t_cub *cub);
-int     trgb(int t, int r, int g, int b);
+int     trgb(int r, int g, int b);
 void    my_mlx_pixel_put(t_img *data, int x, int y, int color);
 void    put_color_in_game(t_cub *cub);
 
