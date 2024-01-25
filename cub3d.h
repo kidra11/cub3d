@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/23 20:45:08 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/25 01:22:11 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ typedef struct s_ray
 	double		vy;
 	double		dist_v;
 	double		dist_f;
+	double		line_h;
+	double 		line_o;
+	double		ca;
 }				t_ray;
 
 typedef struct s_player
@@ -175,6 +178,7 @@ void	draw_thick_line(t_cub *cub, int x1, int y1, int x2, int y2, int thickness, 
 
 //raycast1.c
 void	draw_ray(t_cub *cub);
+void	render(t_cub *cub, int r);
 void	check_full_rota(t_cub *cub);
 double	dist(double ax, double ay, double bx, double by);
 

@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:24:58 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/23 20:13:39 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/25 01:16:44 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_all_val(t_cub *cub)
 	cub->colors = NULL;
 	cub->tex = NULL;
 	cub->map = NULL;
-	cub->data.map_size = 64;
+	cub->data.map_size = 32;
 	cub->data.map_width = 0;
 	cub->data.map_height = 0;
 	cub->data.no = NULL;
@@ -48,8 +48,8 @@ void	init_file(t_cub *cub, char *file)
 
 void	init_player(t_cub *cub)
 {
-	cub->player.pos_x = 250;
-	cub->player.pos_y = 250;
+	cub->player.pos_x = cub->data.player_pos_x * 64 + 32;
+	cub->player.pos_y = cub->data.player_pos_y * 64 + 32;
 	cub->player.pa = 0;
 	cub->player.pdx = cos(cub->player.pa) * 5;
 	cub->player.pdy = sin(cub->player.pa) * 5;
@@ -71,4 +71,7 @@ void	init_ray(t_cub *cub)
 	cub->ray.vy = 0;
 	cub->ray.dist_v = 1000000000;
 	cub->ray.dist_f = 1;
+	cub->ray.line_h = 0;
+	cub->ray.line_o = 0;
+	cub->ray.ca = 0;
 }

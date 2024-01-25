@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:16:42 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/23 20:34:55 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/25 01:11:32 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,22 @@ int	key_move(int keycode, t_cub *cub)
 		cub->player.pos_x += cub->player.pdx;
 		cub->player.pos_y += cub->player.pdy;
 	}
-	if (keycode == 1) //s
+	else if (keycode == 1) //s
 	{
 		cub->player.pos_x -= cub->player.pdx;
 		cub->player.pos_y -= cub->player.pdy;
 	}
-	if (keycode == 0) //a
+	else if (keycode == 0) //a
+	{
+		cub->player.pos_x += cub->player.pdy;
+		cub->player.pos_y -= cub->player.pdx;
+	}
+	else if (keycode == 2) //d
+	{
+		cub->player.pos_x -= cub->player.pdy;
+		cub->player.pos_y += cub->player.pdx;
+	}
+	else if (keycode == 123) // <-
 	{
 		cub->player.pa -= 0.1;
 		if (cub->player.pa < 0)
@@ -32,7 +42,7 @@ int	key_move(int keycode, t_cub *cub)
 		cub->player.pdx = cos(cub->player.pa) * 5;
 		cub->player.pdy = sin(cub->player.pa) * 5;
 	}
-	if (keycode == 2) //d
+	else if (keycode == 124) // ->
 	{
 		cub->player.pa += 0.1;
 		if (cub->player.pa > 2 * PI)
@@ -40,14 +50,15 @@ int	key_move(int keycode, t_cub *cub)
 		cub->player.pdx = cos(cub->player.pa) * 5;
 		cub->player.pdy = sin(cub->player.pa) * 5;
 	}
-	if (keycode == 53) //esc
+	else if (keycode == 53) //esc
 	{
 		mlx_destroy_window(cub->data.mlx, cub->data.mlx_win);
 		exit(0);
 	}
 	mlx_clear_window(cub->data.mlx, cub->data.mlx_win);
-	draw_map(cub);
-	draw_player(cub);
+	//draw_map(cub);
+	//draw_player(cub);
+	draw_ray(cub);
 	return (0);
 }
 

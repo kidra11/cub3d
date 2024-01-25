@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 20:40:51 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/23 20:42:52 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/24 16:17:47 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	horizontal_hit(t_cub *cub, int *dof)
 			cub->ray.hy = cub->ray.ry;
 			cub->ray.dist_h = dist(cub->player.pos_x, cub->player.pos_y,
 					cub->ray.hx, cub->ray.hy);
-			*dof = 8;
+			*dof = cub->data.map_height;
 		}
 		else
 		{
@@ -109,7 +109,7 @@ void	vertical_hit(t_cub *cub, int *dof)
 			cub->ray.vy = cub->ray.ry;
 			cub->ray.dist_v = dist(cub->player.pos_x, cub->player.pos_y,
 					cub->ray.vx, cub->ray.vy);
-			*dof = 8;
+			*dof = cub->data.map_width;
 		}
 		else
 		{

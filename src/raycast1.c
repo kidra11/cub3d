@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:20:21 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/23 20:42:48 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/25 01:22:51 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ void	draw_ray(t_cub *cub)
 		vertical_check(cub, &dof, n_tan);
 		vertical_hit(cub, &dof);
 		closest_ray(cub);
-		draw_line(cub, cub->player.pos_x + (10 / 2), cub->player.pos_y + (10 / 2), (int)cub->ray.rx, (int)cub->ray.ry, 0x00FF00);
+		//draw_line(cub, cub->player.pos_x + (10 / 2), cub->player.pos_y
+		//	+ (10 / 2), (int)cub->ray.rx, (int)cub->ray.ry, 0x00FF00);
 		// draw 3D
+		/*
 		double line_h;
 		double line_o;
 		double	ca;
@@ -66,8 +68,28 @@ void	draw_ray(t_cub *cub)
 		draw_thick_line(cub, 530 + (r * 8), line_o, 530 + (r * 8), line_o + line_h, 8, 0x00FF00);
 		cub->ray.ra += DR;
 		check_full_rota(cub);
+		*/
+		render(cub, r);
 		r++;
 	}
+}
+
+void	render(t_cub *cub, int r)
+{
+	cub->ray.ca = cub->player.pa - cub->ray.ra;
+	if (cub->ray.ca < 0)
+		cub->ray.ca += 2 * PI;
+	if (cub->ray.ca > 2 * PI)
+		cub->ray.ca -= 2 * PI;
+	cub->ray.dist_f = cub->ray.dist_f * cos(cub->ray.ca);
+	cub->ray.line_h = (cub->data.map_size * SCREEN_HEIGHT) / cub->ray.dist_f;
+	if (cub->ray.line_h > SCREEN_HEIGHT)
+		cub->ray.line_h = SCREEN_HEIGHT;
+	cub->ray.line_o = (SCREEN_HEIGHT / 2) - (cub->ray.line_h / 2);
+	draw_thick_line(cub, r * 17, cub->ray.line_o, r * 17,
+		cub->ray.line_o + cub->ray.line_h, 17, 0x00FF00);
+	cub->ray.ra += DR;
+	check_full_rota(cub);
 }
 
 
