@@ -6,7 +6,7 @@
 #    By: lthong <lthong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 15:28:04 by nsion             #+#    #+#              #
-#    Updated: 2024/01/23 20:50:00 by lthong           ###   ########.fr        #
+#    Updated: 2024/01/25 01:33:18 by lthong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC = main.c\
 	draw.c\
 	raycast1.c\
 	raycast2.c\
+	render.c\
 	handle_key.c\
 
 OBJS = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))

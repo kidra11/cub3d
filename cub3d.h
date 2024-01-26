@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/25 01:22:11 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/26 17:28:53 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ typedef struct s_ray
 	double		dist_v;
 	double		dist_f;
 	double		line_h;
-	double 		line_o;
+	double		line_o;
 	double		ca;
+	int			side;
 }				t_ray;
 
 typedef struct s_player
@@ -65,6 +66,14 @@ typedef struct s_player
 	double		pdx;
 	double		pdy;
 }				t_player;
+
+typedef struct s_texture
+{
+	int			width;
+	int			height;
+	t_img		img;
+}				t_texture;
+
 
 typedef struct s_data
 {
@@ -98,6 +107,10 @@ typedef struct s_cub
 	t_data		data;
 	t_img		img;
 	t_ray		ray;
+	t_texture	no;
+	t_texture	so;
+	t_texture	we;
+	t_texture	ea;
 }				t_cub;
 
 //clean_exit.c
@@ -162,6 +175,7 @@ void	init_all_val(t_cub *cub);
 void	init_file(t_cub *cub, char *file);
 void	init_player(t_cub *cub);
 void	init_ray(t_cub *cub);
+void	init_texture(t_cub *cub);
 
 //handle_key.c
 int		key_move(int keycode, t_cub *cub);
@@ -173,14 +187,18 @@ void	draw_map(t_cub *cub);
 void	draw_player(t_cub *cub);
 void	draw_player_pos(t_cub *cub, int x, int y, int size);
 void	draw_point(t_cub *cub, int x, int y, int color);
-void	draw_line(t_cub *cub, int x1, int y1, int x2, int y2, int color);
-void	draw_thick_line(t_cub *cub, int x1, int y1, int x2, int y2, int thickness, int color);
+//void	draw_line(t_cub *cub, int x1, int y1, int x2, int y2, int color);
+//void	draw_thick_line(t_cub *cub, int x1, int y1, int x2, int y2, int thickness, int color);
+
+void	draw_line(t_cub *cub, int x1, int y1, int x2, int y2, double tex_x, double tex_y, t_texture *texture);
+void	draw_thick_line(t_cub *cub, int x1, int y1, int x2, int y2, double tex_x, double tex_y, int thickness, t_texture *texture);
 
 //raycast1.c
 void	draw_ray(t_cub *cub);
 void	render(t_cub *cub, int r);
 void	check_full_rota(t_cub *cub);
 double	dist(double ax, double ay, double bx, double by);
+t_texture	load_texture(t_cub *cub, char *xpm_file);
 
 //raycast2.c
 void	horizontal_check(t_cub *cub, int *dof, double a_tan);
@@ -188,6 +206,10 @@ void	horizontal_hit(t_cub *cub, int *dof);
 void	vertical_check(t_cub *cub, int *dof, double n_tan);
 void	vertical_hit(t_cub *cub, int *dof);
 void	closest_ray(t_cub *cub);
+
+//render.c
+int		get_texel_color(t_texture *texture, int x, int y);
+void	put_color_in_game(t_cub *cub);
 
 //main.c
 int		end(t_cub *cub);

@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/25 01:08:23 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/26 01:30:00 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,11 @@ int	main(int ac, char **av)
 	cub.data.mlx = mlx_init();
 	cub.data.mlx_win = mlx_new_window(cub.data.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
 	init_player(&cub);
+	init_texture(&cub);
 	cub.img.img = mlx_new_image(cub.data.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	cub.img.addr = mlx_get_data_addr(cub.img.img, &cub.img.bits_per_pixel, &cub.img.line_length, &cub.img.endian);
-	//draw_map(&cub);
-	//draw_player(&cub);
+	put_color_in_game(&cub);
 	draw_ray(&cub);
-	printf("Player position: (%f, %f)\n", cub.player.pos_x, cub.player.pos_y);
-	printf("Player direction: %f radians\n", cub.player.pa);
-	printf("Ray direction: %f radians\n", cub.ray.ra);
 	mlx_hook(cub.data.mlx_win, 2, 0, key_move, &cub);
 	mlx_hook(cub.data.mlx_win, 3, 0, key_move_release, &cub);
 	mlx_hook(cub.data.mlx_win, 17, 0, end, &cub);

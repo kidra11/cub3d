@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 20:40:51 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/24 16:17:47 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/26 18:07:29 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	horizontal_check(t_cub *cub, int *dof, double a_tan)
 	{
 		cub->ray.rx = cub->player.pos_x;
 		cub->ray.ry = cub->player.pos_y;
-		*dof = 8;
+		*dof = cub->data.map_height;
 	}
 }
 
@@ -66,7 +66,7 @@ void	vertical_check(t_cub *cub, int *dof, double n_tan)
 	{
 		cub->ray.rx = cub->player.pos_x;
 		cub->ray.ry = cub->player.pos_y;
-		*dof = 8;
+		*dof = cub->data.map_width;
 	}
 }
 
@@ -126,12 +126,14 @@ void	closest_ray(t_cub *cub)
 	{
 		cub->ray.rx = cub->ray.vx;
 		cub->ray.ry = cub->ray.vy;
+		cub->ray.side = 1;
 		cub->ray.dist_f = cub->ray.dist_v;
 	}
 	if (cub->ray.dist_h < cub->ray.dist_v)
 	{
 		cub->ray.rx = cub->ray.hx;
 		cub->ray.ry = cub->ray.hy;
+		cub->ray.side = 0;
 		cub->ray.dist_f = cub->ray.dist_h;
 	}
 }

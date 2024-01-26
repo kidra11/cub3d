@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:16:42 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/25 01:11:32 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/25 14:04:50 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	key_move(int keycode, t_cub *cub)
 	mlx_clear_window(cub->data.mlx, cub->data.mlx_win);
 	//draw_map(cub);
 	//draw_player(cub);
+	put_color_in_game(cub);
 	draw_ray(cub);
 	return (0);
 }

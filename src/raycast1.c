@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:20:21 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/25 01:22:51 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/26 18:09:12 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,29 +46,6 @@ void	draw_ray(t_cub *cub)
 		vertical_check(cub, &dof, n_tan);
 		vertical_hit(cub, &dof);
 		closest_ray(cub);
-		//draw_line(cub, cub->player.pos_x + (10 / 2), cub->player.pos_y
-		//	+ (10 / 2), (int)cub->ray.rx, (int)cub->ray.ry, 0x00FF00);
-		// draw 3D
-		/*
-		double line_h;
-		double line_o;
-		double	ca;
-		 //fish eye
-		ca = cub->player.pa - cub->ray.ra;
-		if (ca < 0)
-			ca += 2 * PI;
-		if (ca > 2 * PI)
-			ca -= 2 * PI;
-		cub->ray.dist_f = cub->ray.dist_f * cos(ca);
-		
-		line_h = (64 * 320) / cub->ray.dist_f;
-		if (line_h > 320)
-			line_h = 320;
-		line_o = 160 - (line_h / 2);
-		draw_thick_line(cub, 530 + (r * 8), line_o, 530 + (r * 8), line_o + line_h, 8, 0x00FF00);
-		cub->ray.ra += DR;
-		check_full_rota(cub);
-		*/
 		render(cub, r);
 		r++;
 	}
@@ -86,13 +63,74 @@ void	render(t_cub *cub, int r)
 	if (cub->ray.line_h > SCREEN_HEIGHT)
 		cub->ray.line_h = SCREEN_HEIGHT;
 	cub->ray.line_o = (SCREEN_HEIGHT / 2) - (cub->ray.line_h / 2);
-	draw_thick_line(cub, r * 17, cub->ray.line_o, r * 17,
-		cub->ray.line_o + cub->ray.line_h, 17, 0x00FF00);
+	//draw_thick_line(cub, r * 17, cub->ray.line_o, r * 17,
+	//	cub->ray.line_o + cub->ray.line_h, 17, rgb(255, 0, 0));
+	
+	int texture_column = (int)((cub->ray.rx - floor(cub->ray.rx)) * cub->no.width);
+    double texture_x = (double)texture_column / cub->no.width;
+    t_texture *current_texture = NULL;
+	if (cub->ray.side == 1)
+	{
+		if (cub->ray.ra < 3 * PI / 2 && cub->ray.ra > PI / 2)
+			current_texture = &cub->we;
+		else
+			current_texture = &cub->ea;
+	}
+	else if (cub->ray.side == 0)
+	{
+		if (cub->ray.ra < PI)
+			current_texture = &cub->no;
+		else
+			current_texture = &cub->so;
+	}
+    for (int y = cub->ray.line_o; y < cub->ray.line_o + cub->ray.line_h; y++)
+    {
+        double texture_y = (double)(y - cub->ray.line_o) / cub->ray.line_h * current_texture->height;
+        int texture_row = (int)texture_y;
+        draw_thick_line(cub, r * 17, y, r * 17, y + 1, texture_x, texture_row, 17, current_texture);
+    }
 	cub->ray.ra += DR;
 	check_full_rota(cub);
 }
 
 
+
+t_texture	load_texture(t_cub *cub, char *xpm_file)
+{
+	t_texture	texture;
+
+	texture.img.img = mlx_xpm_file_to_image(cub->data.mlx, xpm_file,
+			&texture.width, &texture.height);
+	texture.img.addr = mlx_get_data_addr(texture.img.img,
+			&texture.img.bits_per_pixel, &texture.img.line_length,
+			&texture.img.endian);
+	return (texture);
+}
+
+
+//draw_line(cub, cub->player.pos_x + (10 / 2), cub->player.pos_y
+//	+ (10 / 2), (int)cub->ray.rx, (int)cub->ray.ry, 0x00FF00);
+// draw 3D
+/*
+double line_h;
+double line_o;
+double	ca;
+	//fish eye
+ca = cub->player.pa - cub->ray.ra;
+if (ca < 0)
+	ca += 2 * PI;
+if (ca > 2 * PI)
+	ca -= 2 * PI;
+cub->ray.dist_f = cub->ray.dist_f * cos(ca);
+
+line_h = (64 * 320) / cub->ray.dist_f;
+if (line_h > 320)
+	line_h = 320;
+line_o = 160 - (line_h / 2);
+draw_thick_line(cub, 530 + (r * 8), line_o, 530 + (r * 8), line_o + line_h, 8, 0x00FF00);
+cub->ray.ra += DR;
+check_full_rota(cub);
+*/
 
 
 
