@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/24 14:20:01 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/26 16:07:46 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,89 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*path;
+
+	char    *addr;
+	int     bits_per_pixel;
+	int     line_length;
+	int     endian;
+	int		width;
+	int		height;
+}               t_img;
+
 typedef struct s_data
 {
+	double	speed;
+	double	rot_speed;
+	
+	double	plane_x;
+	double	plane_y;
+
+	double 	ray_dir_x;
+	double 	ray_dir_y;
+
+	double 	delta_dist_x;
+	double 	delta_dist_y;
+	
+	int		step_x;
+	int		step_y;
+
+	double	side_dist_x;
+	double	side_dist_y;
+	
+	int		display_width;
+	int		display_height;
+	
 	int		red_f;
 	int		green_f;
 	int		blue_f;
+	
 	int		red_c;
 	int		green_c;
 	int		blue_c;
+	
+	double	pos_x;
+	double	pos_y;
+
+	int		map_x;
+	int		map_y;
+	
+	int		wall_side;
+	
+	double  cam_x;
+	
+	double	dir_x;
+	double	dir_y;
+	
 	char	*no;
 	char	*so;
 	char	*we;
 	char	*ea;
+	
 	double	player_pos_x;
 	double	player_pos_y;
-	double	player_look_dir_x;
-	double	player_look_dir_y;
-	double	player_plane_x;
-	double	player_plane_y;
+
 	char	player;
+	
+	double	perpwalldist;
+	
+	double 	wall_x;
+	
+	int		tex_x;
+	int		tex_y;
+	
+	double	step;
+	
+	double 	tex_pos;
+	
+	int		start;
+	int		end;
+	
+	void	*mlx;
+	void	*mlx_win;
 }				t_data;
 
 typedef struct s_cub
@@ -51,7 +115,32 @@ typedef struct s_cub
 	char		**tex;
 	char		**colors;
 	t_data		data;
+	t_img		img[5];
 }			t_cub;
+
+//raycasting.c
+
+void	get_delta_distance(t_cub *cub);
+void	get_step(t_cub *cub);
+void	define_column(t_cub *cub, int *line_height, int *start, int *end);
+void	define_texture(t_cub *cub, int start, int line_height);
+int		get_color(t_cub *cub, int x, int y, int i);
+void	draw(t_cub *cub, int x, int texture);
+void	draw_column(t_cub *cub, int x);
+void	raycasting(t_cub *cub);
+void	dda(t_cub *cub);
+void	init_raycast(t_cub *cub, int x);
+
+//start_gaming.c
+
+void	my_mlx_pixel_put(t_cub *cub, int x, int y, int color);
+int		trgb(int t, int r, int g, int b);
+void	render_background(t_cub *cub);
+int		render(t_cub *cub);
+void	init_img(t_cub *cub);
+void	init_game_stat(t_cub *cub);
+int 	init_game(t_cub *cub);
+
 
 //clean_exit.c
 void	clean_all_exit(char *message, t_cub *cub);

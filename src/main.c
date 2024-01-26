@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/24 14:07:43 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/26 16:09:24 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int	main(int ac, char **av)
 	is_cub_file(av[1]);
 	init_all_val(&cub);
 	init_file(&cub, av[1]);
-	ft_printf("Parsing done\n");
+	//ft_printf("Parsing done\n");
+	init_game(&cub);
 	end_exit(&cub);
 	return (0);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nath <nath@student.42.fr>                  +#+  +:+       +#+         #
+#    By: bbach <bbach@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 15:28:04 by nsion             #+#    #+#              #
-#    Updated: 2024/01/23 17:33:53 by nath             ###   ########.fr        #
+#    Updated: 2024/01/26 16:02:49 by bbach            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ SRC = main.c\
 	check_colors_2.c\
 	clean_exit.c\
 	testeur.c\
+	raycasting.c\
+	start_gaming.c\
 	
 OBJS = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
