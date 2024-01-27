@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:12:17 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/26 01:41:33 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/26 19:27:08 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	draw_player_pos(t_cub *cub, int x, int y, int size)
 		cub->img.img, 0, 0);
 }
 
-void draw_line(t_cub *cub, int x1, int y1, int x2, int y2, double tex_x, double tex_y, t_texture *texture)
+void	draw_line(t_cub *cub, int x1, int y1, int x2, int y2, double tex_x, double tex_y, t_texture *texture)
 {
     int dx = abs(x2 - x1);
     int dy = abs(y2 - y1);
@@ -68,17 +68,20 @@ void draw_line(t_cub *cub, int x1, int y1, int x2, int y2, double tex_x, double 
     int sy = y1 < y2 ? 1 : -1;
     int err = dx - dy;
 
-    while (1) {
+    while (1)
+	{
 		int color = get_texel_color(texture, tex_x, tex_y);
         mlx_pixel_put(cub->data.mlx, cub->data.mlx_win, x1, y1, color);
         if (x1 == x2 && y1 == y2)
             break;
         int e2 = 2 * err;
-        if (e2 > -dy) {
+        if (e2 > -dy)
+		{
             err -= dy;
             x1 += sx;
         }
-        if (e2 < dx) {
+        if (e2 < dx)
+		{
             err += dx;
             y1 += sy;
         }

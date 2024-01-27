@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/26 17:28:53 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/27 03:40:43 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,12 @@ typedef struct s_texture
 	t_img		img;
 }				t_texture;
 
+typedef struct s_render
+{
+	int			tex_col;
+	double		tex_x;
+	double		tex_y;
+}				t_render;
 
 typedef struct s_data
 {
@@ -107,10 +113,12 @@ typedef struct s_cub
 	t_data		data;
 	t_img		img;
 	t_ray		ray;
+	t_render	render;
 	t_texture	no;
 	t_texture	so;
 	t_texture	we;
 	t_texture	ea;
+	t_texture	*cur_tex;
 }				t_cub;
 
 //clean_exit.c
@@ -191,14 +199,15 @@ void	draw_point(t_cub *cub, int x, int y, int color);
 //void	draw_thick_line(t_cub *cub, int x1, int y1, int x2, int y2, int thickness, int color);
 
 void	draw_line(t_cub *cub, int x1, int y1, int x2, int y2, double tex_x, double tex_y, t_texture *texture);
-void	draw_thick_line(t_cub *cub, int x1, int y1, int x2, int y2, double tex_x, double tex_y, int thickness, t_texture *texture);
+void	draw_thick_line(t_cub *cub, int x1, int y1, int x2, int y2,
+			double tex_x, double tex_y, int thickness, t_texture *texture);
 
 //raycast1.c
 void	draw_ray(t_cub *cub);
 void	render(t_cub *cub, int r);
 void	check_full_rota(t_cub *cub);
 double	dist(double ax, double ay, double bx, double by);
-t_texture	load_texture(t_cub *cub, char *xpm_file);
+void	side_texture(t_cub *cub);
 
 //raycast2.c
 void	horizontal_check(t_cub *cub, int *dof, double a_tan);
@@ -210,6 +219,7 @@ void	closest_ray(t_cub *cub);
 //render.c
 int		get_texel_color(t_texture *texture, int x, int y);
 void	put_color_in_game(t_cub *cub);
+t_texture	load_texture(t_cub *cub, char *xpm_file);
 
 //main.c
 int		end(t_cub *cub);

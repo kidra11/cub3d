@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:24:58 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/26 17:29:06 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/27 03:41:04 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	init_all_val(t_cub *cub)
 	cub->data.red_c = 0;
 	cub->data.green_c = 0;
 	cub->data.blue_c = 0;
+	cub->cur_tex = NULL;
 }
 
 void	init_file(t_cub *cub, char *file)
@@ -50,7 +51,7 @@ void	init_player(t_cub *cub)
 {
 	cub->player.pos_x = 250;
 	cub->player.pos_y = 250;
-	cub->player.pa = -PI / 2;
+	cub->player.pa = PI / 2;
 	cub->player.pdx = cos(cub->player.pa) * 5;
 	cub->player.pdy = sin(cub->player.pa) * 5;
 }
@@ -79,6 +80,9 @@ void	init_ray(t_cub *cub)
 
 void	init_texture(t_cub *cub)
 {
+	cub->render.tex_col = 0;
+	cub->render.tex_x = 0;
+	cub->render.tex_y = 0;
 	cub->no = load_texture(cub, cub->data.no);
 	cub->so = load_texture(cub, cub->data.so);
 	cub->we = load_texture(cub, cub->data.we);

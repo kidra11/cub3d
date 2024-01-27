@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/26 01:30:00 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/26 18:56:23 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,6 @@ int	get_mapy_size(t_cub *cub)
 int	end(t_cub *cub)
 {
 	end_exit(cub);
-	return (0);
-}
-
-int	print_key(int keycode, t_cub *cub)
-{
-	(void)cub;
-	printf("keycode: %d\n", keycode);
 	return (0);
 }
 

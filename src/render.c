@@ -6,7 +6,7 @@
 /*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 01:26:17 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/26 17:24:47 by lthong           ###   ########.fr       */
+/*   Updated: 2024/01/26 19:27:12 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,16 @@ void	put_color_in_game(t_cub *cub)
 	}
 	mlx_put_image_to_window(cub->data.mlx, cub->data.mlx_win,
 		cub->img.img, 0, 0);
+}
+
+t_texture	load_texture(t_cub *cub, char *xpm_file)
+{
+	t_texture	texture;
+
+	texture.img.img = mlx_xpm_file_to_image(cub->data.mlx, xpm_file,
+			&texture.width, &texture.height);
+	texture.img.addr = mlx_get_data_addr(texture.img.img,
+			&texture.img.bits_per_pixel, &texture.img.line_length,
+			&texture.img.endian);
+	return (texture);
 }
