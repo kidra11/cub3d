@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bbach <bbach@student.42.fr>                +#+  +:+       +#+         #
+#    By: nsion <nsion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 15:28:04 by nsion             #+#    #+#              #
-#    Updated: 2024/01/26 16:02:49 by bbach            ###   ########.fr        #
+#    Updated: 2024/01/27 16:47:21 by nsion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRC = main.c\
 	testeur.c\
 	raycasting.c\
 	start_gaming.c\
-	
+	ft_hook.c\
+
 OBJS = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 SRC_DIR = src/

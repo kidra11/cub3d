@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/26 16:07:46 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/27 17:12:35 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define SCREEN_WIDTH 1024
+# define SCREEN_HEIGHT 510
+
+# define ESC 65307
+# define Z 122
+# define S 115
+# define Q 113
+# define D 100
+# define RIGHT 65363
+# define LEFT 65361
+
+# define PI 3.14159265359
+# define DR 0.0174533
 
 typedef struct s_img
 {
@@ -85,6 +99,7 @@ typedef struct s_data
 	
 	double	player_pos_x;
 	double	player_pos_y;
+	double	player_pa;
 
 	char	player;
 	
@@ -118,8 +133,13 @@ typedef struct s_cub
 	t_img		img[5];
 }			t_cub;
 
-//raycasting.c
+//ft_hook.c
+int		end(t_cub *cub);
+int	key_move(int keycode, t_cub *cub);
+void	init_key_move(int keycode, t_cub *cub);
+int	key_move_release(int keycode, t_cub *cub);
 
+//raycasting.c
 void	get_delta_distance(t_cub *cub);
 void	get_step(t_cub *cub);
 void	define_column(t_cub *cub, int *line_height, int *start, int *end);
@@ -132,7 +152,6 @@ void	dda(t_cub *cub);
 void	init_raycast(t_cub *cub, int x);
 
 //start_gaming.c
-
 void	my_mlx_pixel_put(t_cub *cub, int x, int y, int color);
 int		trgb(int t, int r, int g, int b);
 void	render_background(t_cub *cub);
