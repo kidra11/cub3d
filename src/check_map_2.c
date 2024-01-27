@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 15:02:58 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/24 13:58:03 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/27 15:19:34 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,38 +66,38 @@ void	where_is_the_player(t_cub *cub)
 	}
 }
 
-void	where_the_player_is_looking_1(t_cub *cub)
-{
-	if (cub->data.player == 'N')
-	{
-		cub->data.player_look_dir_x = 0;
-		cub->data.player_look_dir_y = -1;
-		cub->data.player_plane_x = 0.66;
-		cub->data.player_plane_y = 0;
-	}
-	else if (cub->data.player == 'S')
-	{
-		cub->data.player_look_dir_x = 0;
-		cub->data.player_look_dir_y = 1;
-		cub->data.player_plane_x = -0.66;
-		cub->data.player_plane_y = 0;
-	}
-}
+// void	where_the_player_is_looking_1(t_cub *cub)
+// {
+// 	if (cub->data.player == 'N')
+// 	{
+// 		cub->data.player_look_dir_x = 0;
+// 		cub->data.player_look_dir_y = -1;
+// 		cub->data.player_plane_x = 0.66;
+// 		cub->data.player_plane_y = 0;
+// 	}
+// 	else if (cub->data.player == 'S')
+// 	{
+// 		cub->data.player_look_dir_x = 0;
+// 		cub->data.player_look_dir_y = 1;
+// 		cub->data.player_plane_x = -0.66;
+// 		cub->data.player_plane_y = 0;
+// 	}
+// }
 
-void	where_the_player_is_looking_2(t_cub *cub)
-{
-	if (cub->data.player == 'W')
-	{
-		cub->data.player_look_dir_x = -1;
-		cub->data.player_look_dir_y = 0;
-		cub->data.player_plane_x = 0;
-		cub->data.player_plane_y = -0.66;
-	}
-	else if (cub->data.player == 'E')
-	{
-		cub->data.player_look_dir_x = 1;
-		cub->data.player_look_dir_y = 0;
-		cub->data.player_plane_x = 0;
-		cub->data.player_plane_y = 0.66;
-	}
-}
+// void	where_the_player_is_looking_2(t_cub *cub)
+// {
+// 	if (cub->data.player == 'W')
+// 	{
+// 		cub->data.player_look_dir_x = -1;
+// 		cub->data.player_look_dir_y = 0;
+// 		cub->data.player_plane_x = 0;
+// 		cub->data.player_plane_y = -0.66;
+// 	}
+// 	else if (cub->data.player == 'E')
+// 	{
+// 		cub->data.player_look_dir_x = 1;
+// 		cub->data.player_look_dir_y = 0;
+// 		cub->data.player_plane_x = 0;
+// 		cub->data.player_plane_y = 0.66;
+// 	}
+// }

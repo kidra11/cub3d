@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:24:34 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/26 16:08:38 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/27 16:25:34 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,16 @@ void    init_img(t_cub *cub)
 
     while (i < 4)
     {
+        printf("width = %d\n", cub->img[i].width);
+        printf("height = %d\n", cub->img[i].height);
         cub->img[i].mlx_img = mlx_xpm_file_to_image(cub->data.mlx, cub->img[i].path, &cub->img[i].width, &cub->img[i].height);
         if (!cub->img[i].mlx_img)
-            clean_exit("Error\nInvalid texture path", cub);
+            clean_exit("Error\nInvalid texture path 1", cub);
         i++;
     }
     cub->img[4].mlx_img = mlx_new_image(cub->data.mlx, cub->data.display_width, cub->data.display_height);
     if (!cub->img[4].mlx_img)
-        clean_exit("Error\nInvalid texture path", cub);
+        clean_exit("Error\nInvalid texture path 2", cub);
     i = 0;
     while (i < 5)
     {
@@ -122,15 +124,24 @@ void	init_game_stat(t_cub *cub)
 
 int init_game(t_cub *cub)
 {
+    printf("test 4\n");
     init_game_stat(cub);
+    printf("test 5\n");
     cub->data.mlx = mlx_init();
+    printf("test 6\n");
     if (!cub->data.mlx)
         clean_exit("Error\nfailed mlx", cub);
+    printf("test 7\n");
     cub->data.mlx_win = mlx_new_window(cub->data.mlx, cub->data.display_width, cub->data.display_height, "cub3d");
+    printf("test 8\n");
     if (!cub->data.mlx_win)
         clean_exit("Error\nfailed mlx", cub);
+    printf("test 9\n");
     init_img(cub);
+    printf("test 10\n");
     mlx_loop_hook(cub->data.mlx, &render, cub);
-    mlx_loop(cub->data.mlx);
+    printf("test 11\n");
+    //mlx_loop(cub->data.mlx);
+    printf("test 12\n");
     return (0);
 }

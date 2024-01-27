@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:42:59 by nath              #+#    #+#             */
-/*   Updated: 2024/01/24 14:18:34 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/26 17:41:27 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*fill_the_line(int len)
 	int		i;
 
 	i = 0;
-	result = malloc((len + 1) * sizeof(char));
+	result = malloc((len) * sizeof(char) + 1);
 	if (!result)
 		return (NULL);
 	while (i < len)

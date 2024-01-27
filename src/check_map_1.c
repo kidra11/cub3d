@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:53:27 by nath              #+#    #+#             */
-/*   Updated: 2024/01/24 14:12:10 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/26 17:36:51 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,10 @@ void	check_map(t_cub *cub)
 	new_map(cub);
 	elements_in_map(cub);
 	where_is_the_player(cub);
-	if (cub->data.player == 'N' || cub->data.player == 'S')
-		where_the_player_is_looking_1(cub);
-	else if (cub->data.player == 'E' || cub->data.player == 'W')
-		where_the_player_is_looking_2(cub);
+	// if (cub->data.player == 'N' || cub->data.player == 'S')
+	// 	where_the_player_is_looking_1(cub);
+	// else if (cub->data.player == 'E' || cub->data.player == 'W')
+	// 	where_the_player_is_looking_2(cub);
 }
 
 //check_map =  verifi que la map a es fermer et si on a tout 
