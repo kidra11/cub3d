@@ -3,14 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   stock_elem.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 20:01:30 by nath              #+#    #+#             */
-/*   Updated: 2024/01/29 17:00:20 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/23 20:13:33 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	elements_in_map(t_cub *cub)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (cub->map[i])
+	{
+		while (cub->map[i][j])
+		{
+			if (cub->map[i][j] != '1' && cub->map[i][j] != '0' && \
+				cub->map[i][j] != 'N' && cub->map[i][j] != 'S' && \
+				cub->map[i][j] != 'E' && cub->map[i][j] != 'W' && \
+				cub->map[i][j] != ' ')
+				exit(ft_printf("Error\nWrong character in map\n"));
+			if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S' || \
+				cub->map[i][j] == 'E' || cub->map[i][j] == 'W')
+			{
+				cub->data.player_pos_x = i;
+				cub->data.player_pos_y = j;
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+}
 
 int	count_elem(t_cub *cub, int choise)
 {
@@ -25,7 +54,7 @@ int	count_elem(t_cub *cub, int choise)
 			cub->all[i][0] == 'W' || cub->all[i][0] == 'E'))
 			result++;
 		if (choise == 2 && (cub->all[i][0] == 'F' || cub->all[i][0] == 'C'))
-				result++;
+			result++;
 		if (choise == 3 && (cub->all[i][0] == '1' || cub->all[i][0] == '0' || \
 			cub->all[i][0] == ' ' || cub->all[i][0] == '\t'))
 			result++;
@@ -64,15 +93,15 @@ void	stock_elem(t_cub *cub)
 	cub->tex = malloc((count_elem(cub, 1) + 1) * sizeof (char *));
 	if (!cub->tex)
 		cub->tex = NULL;
-	cub->tex[count_elem(cub, 1)] = '\0';
+	cub->tex[count_elem(cub, 1)] = NULL;
 	cub->colors = malloc((count_elem(cub, 2) + 1) * sizeof (char *));
 	if (!cub->colors)
 		cub->colors = NULL;
-	cub->colors[count_elem(cub, 2)] = '\0';
+	cub->colors[count_elem(cub, 2)] = NULL;
 	cub->map = malloc((count_elem(cub, 3) + 1) * sizeof (char *));
 	if (!cub->map)
 		cub->map = NULL;
-	cub->map[count_elem(cub, 3)] = '\0';
+	cub->map[count_elem(cub, 3)] = NULL;
 	text_map_malloc(cub);
 }
 

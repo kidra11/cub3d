@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:00:01 by nath              #+#    #+#             */
-/*   Updated: 2024/01/29 18:31:19 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/23 20:13:49 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ void	clean_all_exit(char *message, t_cub *cub)
 
 void	clean_exit(char *message, t_cub *cub)
 {
-	int	i;
-
-	i = 0;
 	if (cub->all)
 		free_tab(cub->all);
 	if (cub->tex)
@@ -44,16 +41,14 @@ void	clean_exit(char *message, t_cub *cub)
 		free_tab(cub->colors);
 	if (cub->map)
 		free_tab(cub->map);
-	if (cub->new_map)
-		free_tab(cub->new_map);
-	while (cub->img[i].path || cub->img[i].addr)
-	{
-		if (cub->img[i].path)
-			free(cub->img[i]. path);
-		else if (cub->img[i].addr)
-			free(cub->img[i].addr);
-		i++;
-	}
+	if (cub->data.no)
+		free(cub->data.no);
+	if (cub->data.so)
+		free(cub->data.so);
+	if (cub->data.we)
+		free(cub->data.we);
+	if (cub->data.ea)
+		free(cub->data.ea);
 	if (!message)
 		exit(ft_printf("Error\n"));
 	exit(ft_printf("%s\n", message));
@@ -61,9 +56,6 @@ void	clean_exit(char *message, t_cub *cub)
 
 void	end_exit(t_cub *cub)
 {
-	int	i;
-
-	i = 0;
 	if (cub->all)
 		free_tab(cub->all);
 	if (cub->tex)
@@ -72,16 +64,14 @@ void	end_exit(t_cub *cub)
 		free_tab(cub->colors);
 	if (cub->map)
 		free_tab(cub->map);
-	if (cub->new_map)
-		free_tab(cub->new_map);
-	while (cub->img[i].path || cub->img[i].addr)
-	{
-		if (cub->img[i].path)
-			free(cub->img[i]. path);
-		else if (cub->img[i].addr)
-			free(cub->img[i].addr);
-		i++;
-	}
+	if (cub->data.no)
+		free(cub->data.no);
+	if (cub->data.so)
+		free(cub->data.so);
+	if (cub->data.we)
+		free(cub->data.we);
+	if (cub->data.ea)
+		free(cub->data.ea);
 	exit(0);
 }
 

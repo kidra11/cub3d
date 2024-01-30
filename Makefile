@@ -6,7 +6,7 @@
 #    By: nsion <nsion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 15:28:04 by nsion             #+#    #+#              #
-#    Updated: 2024/01/29 17:15:02 by nsion            ###   ########.fr        #
+#    Updated: 2024/01/30 17:40:13 by nsion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,18 @@ SRC = main.c\
 	stock.c\
 	check_syntax.c\
 	stock_elem.c\
-	check_map_1.c\
-	check_map_2.c\
-	new_map.c\
+	check_map.c\
 	check_texture.c\
 	check_colors_1.c\
 	check_colors_2.c\
 	clean_exit.c\
 	testeur.c\
+	init.c\
+	draw.c\
+	raycast1.c\
+	raycast2.c\
+	render.c\
+	handle_key.c\
 
 OBJS = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 

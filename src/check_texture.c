@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:02:49 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/27 16:21:23 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/23 20:13:52 by lthong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,26 +61,26 @@ void	get_path_texture(t_cub *cub)
 	while (cub->tex[i])
 	{
 		if (cub->tex[i][0] == 'N' && cub->tex[i][1] == 'O')
-			cub->img[1].path = ft_copy(cub->tex[i], 3, ft_strlen(cub->tex[i]));
+			cub->data.no = ft_copy(cub->tex[i], 3, ft_strlen(cub->tex[i]));
 		if (cub->tex[i][0] == 'S' && cub->tex[i][1] == 'O')
-			cub->img[2].path = ft_copy(cub->tex[i], 3, ft_strlen(cub->tex[i]));
+			cub->data.so = ft_copy(cub->tex[i], 3, ft_strlen(cub->tex[i]));
 		if (cub->tex[i][0] == 'W' && cub->tex[i][1] == 'E')
-			cub->img[3].path= ft_copy(cub->tex[i], 3, ft_strlen(cub->tex[i]));
+			cub->data.we = ft_copy(cub->tex[i], 3, ft_strlen(cub->tex[i]));
 		if (cub->tex[i][0] == 'E' && cub->tex[i][1] == 'A')
-			cub->img[0].path = ft_copy(cub->tex[i], 3, ft_strlen(cub->tex[i]));
+			cub->data.ea = ft_copy(cub->tex[i], 3, ft_strlen(cub->tex[i]));
 		i++;
 	}
 }
 
 void	check_path_correct(t_cub *cub)
 {
-	if (access(cub->img[1].path, F_OK) == -1)
+	if (access(cub->data.no, F_OK) == -1)
 		clean_exit("Error\nWrong texture path", cub);
-	if (access(cub->img[2].path, F_OK) == -1)
+	if (access(cub->data.so, F_OK) == -1)
 		clean_exit("Error\nWrong texture path", cub);
-	if (access(cub->img[3].path, F_OK) == -1)
+	if (access(cub->data.we, F_OK) == -1)
 		clean_exit("Error\nWrong texture path", cub);
-	if (access(cub->img[0].path, F_OK) == -1)
+	if (access(cub->data.ea, F_OK) == -1)
 		clean_exit("Error\nWrong texture path", cub);
 }
 
