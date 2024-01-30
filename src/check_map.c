@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:53:27 by nath              #+#    #+#             */
-/*   Updated: 2024/01/22 18:36:53 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/30 16:30:43 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,76 @@ void	check_map(t_cub *cub)
 		clean_exit("Error\nMap is not closed outside", cub);
 	flood_the_wall(cub);
 	elements_in_map(cub);
+	where_is_the_player(cub);
 }
 
+void	elements_in_map(t_cub *cub)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (cub->map[i])
+	{
+		j = 0;
+		while (cub->map[i][j])
+		{
+			if (cub->map[i][j] != '1' && cub->map[i][j] != '0' && \
+				cub->map[i][j] != 'N' && cub->map[i][j] != 'S' && \
+				cub->map[i][j] != 'E' && cub->map[i][j] != 'W' && \
+				cub->map[i][j] != ' ')
+				clean_exit("Error : Wrong element in map\n", cub);
+			else if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S' || \
+				cub->map[i][j] == 'E' || cub->map[i][j] == 'W')
+				count++;
+			j++;
+		}
+		i++;
+	}
+	if (count != 1)
+		clean_exit("Error : Wrong number of player\n", cub);
+}
+
+void	where_is_the_player(t_cub *cub)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (cub->map[i])
+	{
+		j = 0;
+		while (cub->map[i][j])
+		{
+			if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S' || \
+				cub->map[i][j] == 'W' || cub->map[i][j] == 'E')
+			{
+				cub->data.player_pos_x = j;
+				cub->data.player_pos_y = i;
+				cub->data.player = cub->map[i][j];
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+double	where_the_player_is_looking(t_cub *cub)
+{
+	if (cub->data.player == 'N')
+		return (0.0);
+	else if (cub->data.player == 'S')
+		return (PI);
+	else if (cub->data.player == 'E')
+		return (PI / 2);
+	else if (cub->data.player == 'W')
+		return (3 * PI / 2);
+	else
+		return (0.0);
+}
 //check_map =  verifi que la map a es fermer et si on a tout 
 //les element necesaire
 //elements_in_map est dans stock eleme

@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/24 15:58:15 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/30 16:33:10 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_data
 	int			map_height;
 	int			player_pos_x;
 	int			player_pos_y;
+	char		player;
 }				t_data;
 
 typedef struct s_cub
@@ -124,9 +125,11 @@ void	check_texture(t_cub *cub);
 //check_map.c
 void	flood_the_wall(t_cub *cub);
 void	check_map(t_cub *cub);
+void	elements_in_map(t_cub *cub);
+void	where_is_the_player(t_cub *cub);
+double	where_the_player_is_looking(t_cub *cub);
 
 //stock_elem.c
-void	elements_in_map(t_cub *cub);
 int		count_elem(t_cub *cub, int choise);
 void	text_map_malloc(t_cub *cub);
 void	stock_elem(t_cub *cub);

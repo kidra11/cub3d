@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:24:58 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/22 18:36:25 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/30 16:28:19 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	init_file(t_cub *cub, char *file)
 
 void	init_player(t_cub *cub)
 {
-	cub->player.pos_x = 250;
-	cub->player.pos_y = 250;
-	cub->player.pa = PI / 2;
+	cub->player.pos_x = cub->data.player_pos_x;
+	cub->player.pos_y = cub->data.player_pos_y;
+	cub->player.pa = where_is_the_player(cub);
 	cub->player.pdx = cos(cub->player.pa) * 5;
 	cub->player.pdy = sin(cub->player.pa) * 5;
 }
