@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/27 17:12:35 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/30 16:17:13 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,6 @@ typedef struct s_data
 	double	dir_x;
 	double	dir_y;
 	
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	
 	double	player_pos_x;
 	double	player_pos_y;
 	double	player_pa;
@@ -133,34 +128,6 @@ typedef struct s_cub
 	t_img		img[5];
 }			t_cub;
 
-//ft_hook.c
-int		end(t_cub *cub);
-int	key_move(int keycode, t_cub *cub);
-void	init_key_move(int keycode, t_cub *cub);
-int	key_move_release(int keycode, t_cub *cub);
-
-//raycasting.c
-void	get_delta_distance(t_cub *cub);
-void	get_step(t_cub *cub);
-void	define_column(t_cub *cub, int *line_height, int *start, int *end);
-void	define_texture(t_cub *cub, int start, int line_height);
-int		get_color(t_cub *cub, int x, int y, int i);
-void	draw(t_cub *cub, int x, int texture);
-void	draw_column(t_cub *cub, int x);
-void	raycasting(t_cub *cub);
-void	dda(t_cub *cub);
-void	init_raycast(t_cub *cub, int x);
-
-//start_gaming.c
-void	my_mlx_pixel_put(t_cub *cub, int x, int y, int color);
-int		trgb(int t, int r, int g, int b);
-void	render_background(t_cub *cub);
-int		render(t_cub *cub);
-void	init_img(t_cub *cub);
-void	init_game_stat(t_cub *cub);
-int 	init_game(t_cub *cub);
-
-
 //clean_exit.c
 void	clean_all_exit(char *message, t_cub *cub);
 void	clean_exit(char *message, t_cub *cub);
@@ -193,8 +160,7 @@ void	check_map(t_cub *cub);
 //check_map_2.c
 void	elements_in_map(t_cub *cub);
 void	where_is_the_player(t_cub *cub);
-void	where_the_player_is_looking_1(t_cub *cub);
-void	where_the_player_is_looking_2(t_cub *cub);
+void	where_the_player_is_looking(t_cub *cub);
 
 //new_map.
 int		longest_line(char **map);

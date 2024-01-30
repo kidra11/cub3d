@@ -6,7 +6,7 @@
 #    By: nsion <nsion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 15:28:04 by nsion             #+#    #+#              #
-#    Updated: 2024/01/27 16:47:21 by nsion            ###   ########.fr        #
+#    Updated: 2024/01/29 17:15:02 by nsion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,6 @@ SRC = main.c\
 	check_colors_2.c\
 	clean_exit.c\
 	testeur.c\
-	raycasting.c\
-	start_gaming.c\
-	ft_hook.c\
 
 OBJS = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 

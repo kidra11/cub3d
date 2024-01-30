@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/27 16:42:00 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/29 17:38:21 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,21 @@
 
 void	init_all_val(t_cub *cub)
 {
+	int	i;
+
+	i = 0;
+	while (i < 5)
+	{
+		cub->img[i].path = NULL;
+		cub->img[i].addr = NULL;
+		i++;
+	}
 	cub->lines_count = 0;
 	cub->all = NULL;
 	cub->colors = NULL;
 	cub->tex = NULL;
 	cub->map = NULL;
 	cub->new_map = NULL;
-	cub->data.no = NULL;
-	cub->data.so = NULL;
-	cub->data.we = NULL;
-	cub->data.ea = NULL;
 	cub->data.player_pos_x = 0;
 	cub->data.player_pos_y = 0;
 	cub->data.red_f = 0;
@@ -68,7 +73,7 @@ int	main(int ac, char **av)
 	is_cub_file(av[1]);
 	init_all_val(&cub);
 	init_file(&cub, av[1]);
-	init_game(&cub);
+	ft_printf("hello\n");
 	end_exit(&cub);
 	return (0);
 }

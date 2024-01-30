@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:42:59 by nath              #+#    #+#             */
-/*   Updated: 2024/01/26 17:41:27 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/29 17:53:04 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,12 @@ char	*fill_the_line(int len)
 	int		i;
 
 	i = 0;
-	result = malloc((len) * sizeof(char) + 1);
+	result = malloc((len + 1) * sizeof(char));
 	if (!result)
 		return (NULL);
 	while (i < len)
 		result[i++] = '1';
+	result[i] = '\0';
 	return (result);
 }
 
@@ -58,7 +59,7 @@ void	fill_the_map(t_cub *cub)
 		if (!cub->new_map[i])
 			clean_exit("error", cub);
 		j = 0;
-		while (cub->map[i][j] && j < longest_line(cub->map))
+		while (j < longest_line(cub->map) && cub->map[i][j])
 		{
 			if (cub->map[i][j] == ' ')
 				cub->new_map[i][j] = '1';
@@ -87,4 +88,5 @@ void	new_map(t_cub *cub)
 	cub->new_map[0] = fill_the_line(longest_line(cub->map));
 	fill_the_map(cub);
 	cub->new_map[i - 1] = fill_the_line(longest_line(cub->map));
+	cub->new_map[i] = 0;
 }
