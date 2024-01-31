@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/30 19:14:57 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/31 14:39:49 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ void		draw_vline(t_cub *cub, int x, int start, int end);
 //handle_key.c
 int			key_move(int keycode, t_cub *cub);
 void		move(int keycode, t_cub *cub);
+int			is_valid_move(t_cub *cub, double x, double y);
 int			key_move_release(int keycode, t_cub *cub);
 int			end(t_cub *cub);
 

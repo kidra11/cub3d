@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_key.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:16:42 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/30 19:08:58 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/31 14:38:58 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,40 @@ int	key_move(int keycode, t_cub *cub)
 	draw_ray(cub);
 	return (0);
 }
-
 void	move(int keycode, t_cub *cub)
 {
-	if (keycode == Z)
+	double new_pos_x = cub->player.pos_x;
+	double new_pos_y = cub->player.pos_y;
+
+	if (keycode == Z || keycode == S 
+	|| keycode == Q || keycode == D)
 	{
-		cub->player.pos_x += cub->player.pdx;
-		cub->player.pos_y += cub->player.pdy;
+		new_pos_x += cub->player.pdx;
+		new_pos_y += cub->player.pdy;
 	}
-	else if (keycode == S)
+	if (is_valid_move(cub, new_pos_x, new_pos_y))
 	{
-		cub->player.pos_x -= cub->player.pdx;
-		cub->player.pos_y -= cub->player.pdy;
+		cub->player.pos_x = new_pos_x;
+		cub->player.pos_y = new_pos_y;
 	}
-	else if (keycode == Q)
-	{
-		cub->player.pos_x += cub->player.pdy;
-		cub->player.pos_y -= cub->player.pdx;
-	}
-	else if (keycode == D)
-	{
-		cub->player.pos_x -= cub->player.pdy;
-		cub->player.pos_y += cub->player.pdx;
-	}
+}
+
+int	is_valid_move(t_cub *cub, double x, double y)
+{
+	int map_x;
+	int map_y;
+
+	map_x = (int)(x / cub->data.map_size);
+	map_y = (int)(y / cub->data.map_size);
+
+	if (map_x < 0 || map_x >= cub->data.map_width ||
+		map_y < 0 || map_y >= cub->data.map_height)
+		return 0;
+
+	if (cub->map[map_y][map_x] == '1')
+		return 0;
+
+	return (1);
 }
 
 int	key_move_release(int keycode, t_cub *cub)
