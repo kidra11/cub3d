@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:20:21 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/31 15:19:23 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/31 15:41:47 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,35 +97,6 @@ void draw_wall(t_cub *cub, int r)
         y++;
     }
 }
-
-// void draw_wall(t_cub *cub, int r)
-// {
-//     int x;
-//     int y;
-
-//     y = cub->ray.line_o;
-//     while (y < cub->ray.line_o + cub->ray.line_h)
-//     {
-//         // Assure-toi que tex_y reste dans les limites de la texture et répète verticalement
-//         cub->render.tex_y = fmod((y - cub->ray.line_o) / cub->ray.line_h * cub->cur_tex->height, cub->cur_tex->height);
-//         if (cub->render.tex_y < 0)
-//             cub->render.tex_y += cub->cur_tex->height;
-
-//         x = 0;
-//         while (x < 17)
-//         {
-//             // Ajuste la répétition de la texture horizontalement
-//             cub->render.tex_x = fmod((r * 17 + x) / cub->ray.line_h * cub->cur_tex->width, cub->cur_tex->width);
-//             if (cub->render.tex_x < 0)
-//                 cub->render.tex_x += cub->cur_tex->width;
-
-//             draw_vline(cub, r * 17 + x, y, y + 1);
-//             x++;
-//         }
-
-//         y++;
-//     }
-// }
 
 void	side_texture(t_cub *cub)
 {
