@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nsion <nsion@student.42.fr>                +#+  +:+       +#+         #
+#    By: bbach <bbach@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 15:28:04 by nsion             #+#    #+#              #
-#    Updated: 2024/01/30 18:31:54 by nsion            ###   ########.fr        #
+#    Updated: 2024/01/31 15:32:48 by bbach            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = main.c\
 	stock_elem.c\
 	render.c\
 	testeur.c\
+	handle_key_2.c\
 
 OBJS = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 

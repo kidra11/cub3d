@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/31 14:39:49 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/31 15:33:30 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,11 +179,16 @@ void		draw_point(t_cub *cub, int x, int y, int color);
 void		draw_vline(t_cub *cub, int x, int start, int end);
 
 //handle_key.c
-int			key_move(int keycode, t_cub *cub);
-void		move(int keycode, t_cub *cub);
+void		move_1(int keycode, t_cub *cub);
+void		move_2(int keycode, t_cub *cub);
 int			is_valid_move(t_cub *cub, double x, double y);
 int			key_move_release(int keycode, t_cub *cub);
 int			end(t_cub *cub);
+
+//handle_key_2.c
+
+int			key_move(int keycode, t_cub *cub);
+void		key_move_end(int keycode, t_cub *cub);
 
 //init.c
 void		init_all_val(t_cub *cub);
