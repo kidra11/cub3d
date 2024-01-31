@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:20:21 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/31 15:41:47 by bbach            ###   ########.fr       */
+/*   Updated: 2024/01/31 16:08:05 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	render(t_cub *cub, int r)
 	cub->ray.ra += DR;
 	check_full_rota(cub);
 }
-
 void draw_wall(t_cub *cub, int r)
 {
     int x;
@@ -77,27 +76,22 @@ void draw_wall(t_cub *cub, int r)
     y = cub->ray.line_o;
     while (y < cub->ray.line_o + cub->ray.line_h)
     {
-        cub->render.tex_y = (double)(y - cub->ray.line_o) / cub->ray.line_h * cub->cur_tex->height;
+        cub->render.tex_y = fmod((y - cub->ray.line_o) / cub->ray.line_h * cub->cur_tex->height, cub->cur_tex->height);
         if (cub->render.tex_y < 0)
-            cub->render.tex_y = 0;
-        if (cub->render.tex_y >= cub->cur_tex->height)
-            cub->render.tex_y = cub->cur_tex->height - 1;
+            cub->render.tex_y += cub->cur_tex->height;
 
         x = 0;
         while (x < 17)
         {
-            cub->render.tex_x = fmod((r * 17 + x), cub->cur_tex->width);
-            
+            cub->render.tex_x = fmod((r * 17.0 + x) / 170.0 * cub->cur_tex->width, cub->cur_tex->width);
             if (cub->render.tex_x < 0)
                 cub->render.tex_x += cub->cur_tex->width;
-
             draw_vline(cub, r * 17 + x, y, y + 1);
             x++;
         }
         y++;
     }
 }
-
 void	side_texture(t_cub *cub)
 {
 	cub->cur_tex = NULL;
