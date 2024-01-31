@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:20:21 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/30 19:10:17 by nsion            ###   ########.fr       */
+/*   Updated: 2024/01/31 14:47:50 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,24 +69,33 @@ void	render(t_cub *cub, int r)
 	check_full_rota(cub);
 }
 
-void	draw_wall(t_cub *cub, int r)
+void draw_wall(t_cub *cub, int r)
 {
-	int		x;
-	int		y;
+    int x;
+    int y;
 
-	y = cub->ray.line_o;
-	while (y < cub->ray.line_o + cub->ray.line_h)
-	{
-		cub->render.tex_y = (double)(y - cub->ray.line_o) / cub->ray.line_h
-			* cub->cur_tex->height;
-		x = 0;
-		while (x < 17)
-		{
-			draw_vline(cub, r * 17 + x, y, y + 1);
-			x++;
-		}
-		y++;
-	}
+    y = cub->ray.line_o;
+    while (y < cub->ray.line_o + cub->ray.line_h)
+    {
+        cub->render.tex_y = (double)(y - cub->ray.line_o) / cub->ray.line_h * cub->cur_tex->height;
+        if (cub->render.tex_y < 0)
+            cub->render.tex_y = 0;
+        if (cub->render.tex_y >= cub->cur_tex->height)
+            cub->render.tex_y = cub->cur_tex->height - 1;
+
+        x = 0;
+        while (x < 17)
+        {
+            cub->render.tex_x = fmod((r * 17 + x), cub->cur_tex->width);
+            
+            if (cub->render.tex_x < 0)
+                cub->render.tex_x += cub->cur_tex->width;
+
+            draw_vline(cub, r * 17 + x, y, y + 1);
+            x++;
+        }
+        y++;
+    }
 }
 
 void	side_texture(t_cub *cub)
