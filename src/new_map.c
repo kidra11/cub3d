@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:42:59 by nath              #+#    #+#             */
-/*   Updated: 2024/01/29 17:53:04 by nsion            ###   ########.fr       */
+/*   Updated: 2024/02/02 00:22:03 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	fill_the_map(t_cub *cub)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 1;
 	while (cub->map[i])
 	{
 		cub->new_map[i] = malloc((longest_line(cub->map) + 1) * sizeof(char));
@@ -72,6 +72,7 @@ void	fill_the_map(t_cub *cub)
 		cub->new_map[i][j] = '\0';
 		i++;
 	}
+	cub->new_map[i] = NULL;
 }
 
 void	new_map(t_cub *cub)
@@ -84,9 +85,7 @@ void	new_map(t_cub *cub)
 	cub->new_map = malloc((i + 1) * sizeof(char *));
 	if (!cub->new_map)
 		clean_exit("error", cub);
-	cub->new_map[i] = '\0';
 	cub->new_map[0] = fill_the_line(longest_line(cub->map));
 	fill_the_map(cub);
 	cub->new_map[i - 1] = fill_the_line(longest_line(cub->map));
-	cub->new_map[i] = 0;
 }

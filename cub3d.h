@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/30 19:14:57 by nsion            ###   ########.fr       */
+/*   Updated: 2024/02/01 23:36:51 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ int			key_move(int keycode, t_cub *cub);
 void		move(int keycode, t_cub *cub);
 int			key_move_release(int keycode, t_cub *cub);
 int			end(t_cub *cub);
+void		free_texture(t_cub *cub);
 
 //init.c
 void		init_all_val(t_cub *cub);

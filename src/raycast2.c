@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 20:40:51 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/26 18:07:29 by lthong           ###   ########.fr       */
+/*   Updated: 2024/02/01 23:49:11 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	horizontal_hit(t_cub *cub, int *dof)
 		cub->ray.my = (int)(cub->ray.ry) >> 6;
 		if (cub->ray.mx >= 0 && cub->ray.mx < cub->data.map_width
 			&& cub->ray.my >= 0 && cub->ray.my < cub->data.map_height
-			&& cub->map[cub->ray.my][cub->ray.mx] == '1')
+			&& cub->new_map[cub->ray.my][cub->ray.mx] == '1')
 		{
 			cub->ray.hx = cub->ray.rx;
 			cub->ray.hy = cub->ray.ry;
@@ -103,7 +103,7 @@ void	vertical_hit(t_cub *cub, int *dof)
 		cub->ray.my = (int)(cub->ray.ry) >> 6;
 		if (cub->ray.mx >= 0 && cub->ray.mx < cub->data.map_width
 			&& cub->ray.my >= 0 && cub->ray.my < cub->data.map_height
-			&& cub->map[cub->ray.my][cub->ray.mx] == '1')
+			&& cub->new_map[cub->ray.my][cub->ray.mx] == '1')
 		{
 			cub->ray.vx = cub->ray.rx;
 			cub->ray.vy = cub->ray.ry;

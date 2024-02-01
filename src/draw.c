@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:12:17 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/30 17:09:11 by lthong           ###   ########.fr       */
+/*   Updated: 2024/02/01 23:50:03 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,15 @@ void	draw_map(t_cub *cub)
 	int	j;
 
 	i = 0;
-	while (cub->map[i])
+	while (cub->new_map[i])
 	{
 		j = 0;
-		while (cub->map[i][j])
+		while (cub->new_map[i][j])
 		{
-			if (cub->map[i][j] == '1')
+			if (cub->new_map[i][j] == '1')
 				draw_point(cub, j * cub->data.map_size, i * cub->data.map_size,
 					rgb(255, 255, 255));
-			else if (cub->map[i][j] == '0')
+			else if (cub->new_map[i][j] == '0')
 				draw_point(cub, j * cub->data.map_size, i * cub->data.map_size,
 					rgb(0, 0, 0));
 			j++;
