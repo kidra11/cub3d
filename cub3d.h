@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:41:31 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/31 15:33:30 by bbach            ###   ########.fr       */
+/*   Updated: 2024/02/02 18:07:46 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,7 @@ void		clean_all_exit(char *message, t_cub *cub);
 void		clean_exit(char *message, t_cub *cub);
 void		end_exit(t_cub *cub);
 void		free_tab(char **tab);
+void		free_texture(t_cub *cub, t_texture tex);
 
 //draw.c
 void		my_mlx_pixel_put(t_img *data, int x, int y, int color);

@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:20:21 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/31 16:08:05 by bbach            ###   ########.fr       */
+/*   Updated: 2024/02/02 19:57:40 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	render(t_cub *cub, int r)
 	cub->ray.ra += DR;
 	check_full_rota(cub);
 }
+
 void draw_wall(t_cub *cub, int r)
 {
     int x;

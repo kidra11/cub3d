@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:03:38 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/30 19:11:33 by nsion            ###   ########.fr       */
+/*   Updated: 2024/02/02 18:22:59 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,11 @@ int	main(int ac, char **av)
 		&cub.img.bits_per_pixel, &cub.img.line_length, &cub.img.endian);
 	put_color_in_game(&cub);
 	draw_ray(&cub);
-	mlx_hook(cub.data.mlx_win, 17, 0, end, &cub);
+
 	mlx_hook(cub.data.mlx_win, 2, 1L << 0, key_move, &cub);
 	mlx_hook(cub.data.mlx_win, 3, 1L << 1, key_move_release, &cub);
+	mlx_hook(cub.data.mlx_win, 17, 0, end, &cub);
 	mlx_loop(cub.data.mlx);
-	end_exit(&cub);
 	return (0);
 }
 

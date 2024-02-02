@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:16:42 by lthong            #+#    #+#             */
-/*   Updated: 2024/02/02 15:10:53 by bbach            ###   ########.fr       */
+/*   Updated: 2024/02/02 18:25:25 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,11 @@ int	end(t_cub *cub)
 		mlx_loop_end(cub->data.mlx);
 		free(cub->data.mlx);
 	}
+	clean_exit("Bbaque?" ,cub);
+	free_texture(cub, cub->no);
+	free_texture(cub, cub->so);
+	free_texture(cub, cub->we);
+	free_texture(cub, cub->ea);
 	end_exit(cub);
 	return (0);
 }
