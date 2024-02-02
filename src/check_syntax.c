@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_syntax.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lthong <lthong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 19:02:02 by nsion             #+#    #+#             */
-/*   Updated: 2024/01/23 20:13:55 by lthong           ###   ########.fr       */
+/*   Updated: 2024/02/02 15:08:31 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,12 @@ void	duble(t_cub *cub)
 int	find_map(char **str)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (str[i])
 	{
-		j = 0;
-		while (str[i][j])
-		{
-			if (str[i][j] == '1')
-				return (i);
-			j++;
-		}
+		if (str[i][0] == '1' || str[i][0] == ' ')
+			return (i);
 		i++;
 	}
 	return (0);

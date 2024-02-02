@@ -6,7 +6,7 @@
 /*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:16:42 by lthong            #+#    #+#             */
-/*   Updated: 2024/01/31 15:37:51 by bbach            ###   ########.fr       */
+/*   Updated: 2024/02/02 15:10:53 by bbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,18 +95,16 @@ int	key_move_release(int keycode, t_cub *cub)
 
 int	end(t_cub *cub)
 {
-	while (cub->data.mlx)
+	mlx_destroy_image(cub->data.mlx, cub->img.img);
+	mlx_destroy_image(cub->data.mlx, cub->cur_tex->img.img);
+	if (cub->data.mlx_win && cub->data.mlx)
+		mlx_destroy_window(cub->data.mlx, cub->data.mlx_win);
+	if (cub->data.mlx)
 	{
-		mlx_destroy_image(cub->data.mlx, cub->cur_tex->img.img);
-		mlx_destroy_image(cub->data.mlx, cub->no.img.img);
-		mlx_destroy_image(cub->data.mlx, cub->so.img.img);
-		mlx_destroy_image(cub->data.mlx, cub->we.img.img);
-		mlx_destroy_image(cub->data.mlx, cub->ea.img.img);
+		mlx_destroy_display(cub->data.mlx);
+		mlx_loop_end(cub->data.mlx);
+		free(cub->data.mlx);
 	}
-	mlx_loop_end(cub->data.mlx);
-	mlx_destroy_window(cub->data.mlx, cub->data.mlx_win);
-	mlx_destroy_display(cub->data.mlx);
-	free(cub->data.mlx);
 	end_exit(cub);
 	return (0);
 }
