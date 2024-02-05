@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_key_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbach <bbach@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:29:21 by bbach             #+#    #+#             */
-/*   Updated: 2024/01/31 15:32:29 by bbach            ###   ########.fr       */
+/*   Updated: 2024/02/05 14:36:58 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	key_move(int keycode, t_cub *cub)
 
 void	key_move_end(int keycode, t_cub *cub)
 {
-    if (keycode == ESC)
+	if (keycode == ESC)
 		end(cub);
 	mlx_clear_window(cub->data.mlx, cub->data.mlx_win);
 	put_color_in_game(cub);

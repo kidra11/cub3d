@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:20:21 by lthong            #+#    #+#             */
-/*   Updated: 2024/02/02 17:03:50 by nsion            ###   ########.fr       */
+/*   Updated: 2024/02/05 14:36:11 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,29 +69,30 @@ void	render(t_cub *cub, int r)
 	check_full_rota(cub);
 }
 
-void draw_wall(t_cub *cub, int r)
+void	draw_wall(t_cub *cub, int r)
 {
-    int x;
-    int y;
+	int	x;
+	int	y;
 
-    y = cub->ray.line_o;
-    while (y < cub->ray.line_o + cub->ray.line_h)
-    {
-        cub->render.tex_y = fmod((y - cub->ray.line_o) / cub->ray.line_h * cub->cur_tex->height, cub->cur_tex->height);
-        if (cub->render.tex_y < 0)
-            cub->render.tex_y += cub->cur_tex->height;
-
-        x = 0;
-        while (x < 17)
-        {
-            cub->render.tex_x = fmod((r * 17.0 + x) / 170.0 * cub->cur_tex->width, cub->cur_tex->width);
-            if (cub->render.tex_x < 0)
-                cub->render.tex_x += cub->cur_tex->width;
-            draw_vline(cub, r * 17 + x, y, y + 1);
-            x++;
-        }
-        y++;
-    }
+	y = cub->ray.line_o;
+	while (y < cub->ray.line_o + cub->ray.line_h)
+	{
+		cub->render.tex_y = fmod((y - cub->ray.line_o) / cub->ray.line_h \
+			* cub->cur_tex->height, cub->cur_tex->height);
+		if (cub->render.tex_y < 0)
+			cub->render.tex_y += cub->cur_tex->height;
+		x = 0;
+		while (x < 17)
+		{
+			cub->render.tex_x = fmod((r * 17.0 + x) / 170.0 * \
+				cub->cur_tex->width, cub->cur_tex->width);
+			if (cub->render.tex_x < 0)
+				cub->render.tex_x += cub->cur_tex->width;
+			draw_vline(cub, r * 17 + x, y, y + 1);
+			x++;
+		}
+		y++;
+	}
 }
 
 void	side_texture(t_cub *cub)
